@@ -11,7 +11,7 @@
 class Sound{
 private:
     std::string symbol;
-    List<Sound>* connectedSounds;
+    List<Sound*>* connectedSounds;
 
     Sound(const Sound& soundToCopy);
     Sound& operator=(const Sound& soundToCopy);
@@ -21,7 +21,7 @@ private:
      * Connects a Sound to this sound.
      * @param connectedSound the sound to connect to.
      */
-    void AddConnectionSecondary(Sound& connectedSound);
+    void addConnectionSecondary(Sound& connectedSound);
 public:
     /**
      * Constructs a Sound Object
@@ -29,23 +29,21 @@ public:
      */
     Sound(std::string symbol);
 
+    //Destructor
+    ~Sound();
+
     /**
      * Connects the two sound objects together
      * @param connectedSound the other sound to connect to
      */
-    void AddConnection(Sound& connectedSound);
+    void addConnection(Sound* connectedSound);
 
     /**
      * Randomly gets a similar sound
      * @return The symbol of that Sound
+     * @throws std::out_of_range when there are no connected Sounds
      */
-    std::string getSimilar();
-    /**
-     * Randomly gets a similar sound
-     * @return that Sound
-     */
-    Sound getSimilarSound();
-
+    std::string getSimilarSymbol();
     /**
      * Get the symbol of this Sound
      * @return the symbol

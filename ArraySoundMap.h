@@ -7,8 +7,10 @@
 
 #include "SoundMap.h"
 
-class ArraySoundMap : SoundMap{
+class ArraySoundMap : public SoundMap{
 private:
+    std::string fileName;
+
     ArraySoundMap(const ArraySoundMap& arraySoundMapToCopy);
     ArraySoundMap& operator=(const SoundMap& arraySoundMapToCopy);
 
@@ -18,7 +20,7 @@ public:
     ~ArraySoundMap();
 
     std::string getFileName();
-    Sound getKey();
+    Sound* getKey(std::string key);
 
 };
 

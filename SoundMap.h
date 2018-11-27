@@ -18,14 +18,14 @@ public:
      * Constructs a SoundMap off of the default file
      * default file is <filename>
      */
-    SoundMap();
+    SoundMap() {};
     /**
      * Constructs a SoundMap off of the file called fileName.
      * @param fileName The files name
      */
-    SoundMap(std::string fileName);
-    // Destuctor
-    virtual ~SoundMap()=0;
+    SoundMap(std::string fileName) {};
+    // Destructor
+    virtual ~SoundMap() {};
 
     /**
      * Gets the fileName used to make the SoundMap
@@ -38,7 +38,7 @@ public:
      * @return the Sound connected with the key.
      * @throws std::invalid_argument if the key doesn't exist
      */
-    virtual Sound getKey(std::string key)=0;
+    virtual Sound* getKey(std::string key)=0;
 };
 
 #endif //INC_220GROUPPROJECT_SOUNDMAP_H
