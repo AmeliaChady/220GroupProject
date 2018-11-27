@@ -6,11 +6,12 @@
 #define INC_220GROUPPROJECT_SOUND_H
 
 #include <iostream>
+#include "List.h"
 
 class Sound{
 private:
     std::string symbol;
-    //List<Sound> connectedSounds;
+    List<Sound>* connectedSounds;
 
     Sound(const Sound& soundToCopy);
     Sound& operator=(const Sound& soundToCopy);
