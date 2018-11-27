@@ -4,10 +4,26 @@
 
 #include "ArraySoundMap.h"
 
+void testSound(){
+    std::cout << "--Sound Tests--------" << std::endl;
+    int totalPasses = 0;
+    int totalFails = 0;
 
+
+
+    std::cout << "Overall:" << std::endl;
+    std::cout << "Passed " << totalPasses << " times." << std::endl;
+    std::cout << "Failed " << totalFails << " times." << std::endl;
+    std::cout << "--Done--------" << std::endl;
+}
+
+void testSoundMap(){
+
+
+}
 
 int main(){
-    std::cout << "yaaaaaaaaaaaaaaaaaaaaaayyyyyyyyyyyyyyyyyyy....." << std::endl;
+    testSound();
 
     return 0;
 }

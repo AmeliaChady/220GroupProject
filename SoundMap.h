@@ -14,11 +14,30 @@ private:
     SoundMap& operator=(const SoundMap& soundMapToCopy);
 
 public:
+    /**
+     * Constructs a SoundMap off of the default file
+     * default file is <filename>
+     */
     SoundMap();
+    /**
+     * Constructs a SoundMap off of the file called fileName.
+     * @param fileName The files name
+     */
     SoundMap(std::string fileName);
+    // Destuctor
     virtual ~SoundMap()=0;
 
+    /**
+     * Gets the fileName used to make the SoundMap
+     * @return the files name
+     */
     virtual std::string getFileName()=0;
+    /**
+     * Gets the Sound object held at key
+     * @param key phonetic symbol of the Sound
+     * @return the Sound connected with the key.
+     * @throws std::invalid_argument if the key doesn't exist
+     */
     virtual Sound getKey(std::string key)=0;
 };
 
