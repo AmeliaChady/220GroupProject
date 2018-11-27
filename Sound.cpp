@@ -31,3 +31,7 @@ std::string Sound::getSimilarSymbol() {
 std::string Sound::getSymbol() {
     return "getSymbol not created";
 }
+
+void Sound::lock() {
+
+}

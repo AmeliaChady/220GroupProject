@@ -43,10 +43,21 @@ void testSound(){
         fails++;
     }
 
+    Sound soundC("C");
+
+    // Testing Locking
+    soundA.lock();
+    try{
+        soundA.addConnection(&soundC);
+        std::cout << "failed" << std::endl;
+        fails++;
+    }catch(std::exception e){
+        std::cout << "passed" << std::endl;
+        passes++;
+    }
 
     //Testing getSimilarSymbol Error
     try{
-        Sound soundC("C");
         soundC.getSimilarSymbol();
         std::cout << "failed" << std::endl;
         fails++;

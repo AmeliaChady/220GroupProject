@@ -10,6 +10,7 @@
 
 class Sound{
 private:
+    bool locked;
     std::string symbol;
     List<Sound*>* connectedSounds;
 
@@ -35,6 +36,7 @@ public:
     /**
      * Connects the two sound objects together
      * @param connectedSound the other sound to connect to
+     * @throws std::exception if the Sound is locked.
      */
     void addConnection(Sound* connectedSound);
 
@@ -49,6 +51,10 @@ public:
      * @return the symbol
      */
     std::string getSymbol();
+    /**
+     * Locks the sound and prevents connections being added through it by addConnection()
+     */
+    void lock();
 };
 
 #endif //INC_220GROUPPROJECT_SOUND_H
