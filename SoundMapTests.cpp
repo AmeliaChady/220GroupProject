@@ -47,6 +47,15 @@ void testSound(){
 
     // Testing Locking
     soundA.lock();
+
+    if(soundA.getLocked()){
+        std::cout << "passed" << std::endl;
+        passes++;
+    }else{
+        std::cout << "failed" << std::endl;
+        fails++;
+    }
+
     try{
         soundA.addConnection(&soundC);
         std::cout << "failed" << std::endl;
@@ -56,9 +65,19 @@ void testSound(){
         passes++;
     }
 
-    //Testing getSimilarSymbol Error
     try{
-        soundC.getSimilarSymbol();
+        soundC.addConnection(&soundA);
+        std::cout << "failed" << std::endl;
+        fails++;
+    }catch(std::exception e){
+        std::cout << "passed" << std::endl;
+        passes++;
+    }
+
+    //Testing getSimilarSymbol Error
+    Sound soundD("D");
+    try{
+        soundD.getSimilarSymbol();
         std::cout << "failed" << std::endl;
         fails++;
     }catch(std::out_of_range e){

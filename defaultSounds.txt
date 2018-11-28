@@ -1,0 +1,13 @@
+// Made By Amelia
+// This number is the amount of sounds
+40
+// These are the sounds, separated by spaces or newlines until # shows up
+
+
+
+#
+// These are the connections between sounds
+// Continues until the # shows up
+
+
+#

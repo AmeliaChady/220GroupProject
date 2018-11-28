@@ -22,7 +22,7 @@ private:
      * Connects a Sound to this sound.
      * @param connectedSound the sound to connect to.
      */
-    void addConnectionSecondary(Sound& connectedSound);
+    void addConnectionSecondary(Sound* connectedSound);
 public:
     /**
      * Constructs a Sound Object
@@ -55,6 +55,11 @@ public:
      * Locks the sound and prevents connections being added through it by addConnection()
      */
     void lock();
+    /**
+     * Gets whether the Sound is locked or not
+     * @return locked
+     */
+    bool getLocked();
 };
 
 #endif //INC_220GROUPPROJECT_SOUND_H

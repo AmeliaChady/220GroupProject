@@ -9,29 +9,46 @@
 Sound::Sound(std::string symbol) {
     this->symbol = symbol;
     //TODO: Change to ArrayList
-    this->connectedSounds = new LinkedList<Sound*>();
+    connectedSounds = new LinkedList<Sound*>();
+    locked = false;
 }
 
 Sound::~Sound() {
-
+    delete connectedSounds;
 }
 
-void Sound::addConnectionSecondary(Sound &connectedSound) {
-
+void Sound::addConnectionSecondary(Sound* connectedSound) {
+    if(locked){
+        throw std::exception();
+    }
+    connectedSounds->insertAtEnd(connectedSound);
 }
 
-void Sound::addConnection(Sound *connectedSound) {
-
+void Sound::addConnection(Sound* connectedSound) {
+    if(locked){
+        throw std::exception();
+    }
+    connectedSounds->insertAtEnd(connectedSound);
+    connectedSound->addConnectionSecondary(this);
 }
 
 std::string Sound::getSimilarSymbol() {
-    return "getSimilarSymbol() not created";
+    if(connectedSounds->isEmpty()){
+        throw std::out_of_range("No Similar Symbols!");
+    }
+    int index = rand() % connectedSounds->itemCount();
+    return connectedSounds->getValueAt(index)->getSymbol();
+
 }
 
 std::string Sound::getSymbol() {
-    return "getSymbol not created";
+    return symbol;
 }
 
 void Sound::lock() {
+    locked = true;
+}
 
+bool Sound::getLocked() {
+    return locked;
 }

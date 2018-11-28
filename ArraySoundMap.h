@@ -10,6 +10,8 @@
 class ArraySoundMap : public SoundMap{
 private:
     std::string fileName;
+    Sound* soundArray;
+    int soundArrayLength;
 
     ArraySoundMap(const ArraySoundMap& arraySoundMapToCopy);
     ArraySoundMap& operator=(const SoundMap& arraySoundMapToCopy);
