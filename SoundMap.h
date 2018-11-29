@@ -27,6 +27,8 @@ public:
     // Destructor
     virtual ~SoundMap() {};
 
+    virtual void read()=0;
+
     /**
      * Gets the fileName used to make the SoundMap
      * @return the files name
@@ -37,6 +39,7 @@ public:
      * @param key phonetic symbol of the Sound
      * @return the Sound connected with the key.
      * @throws std::invalid_argument if the key doesn't exist
+     * @throws std::out_of_range if the map is empty
      */
     virtual Sound* getKey(std::string key)=0;
 };

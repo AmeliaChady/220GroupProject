@@ -28,8 +28,10 @@ void Sound::addConnection(Sound* connectedSound) {
     if(locked){
         throw std::exception();
     }
-    connectedSounds->insertAtEnd(connectedSound);
-    connectedSound->addConnectionSecondary(this);
+    if(connectedSounds->find(connectedSound)==-1) {
+        connectedSounds->insertAtEnd(connectedSound);
+        connectedSound->addConnectionSecondary(this);
+    }
 }
 
 std::string Sound::getSimilarSymbol() {

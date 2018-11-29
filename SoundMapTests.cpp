@@ -98,6 +98,7 @@ void testSoundMap(){
 
     try{
         SoundMap* testDefault = new ArraySoundMap();
+        testDefault->read();
         std::cout << "passed" << std::endl;
         passes++;
         delete testDefault;
@@ -115,6 +116,8 @@ void testSoundMap(){
         std::cout << "failed" << std::endl;
         fails++;
     }
+
+    map->read();
 
     if(map->getKey("A")->getSymbol()=="A"){
         std::cout << "passed" << std::endl;
