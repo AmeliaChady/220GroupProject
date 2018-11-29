@@ -14,7 +14,7 @@ private:
     List<Sound*>* soundArray;
     int soundArrayLength;
 
-    ArraySoundMap(c     onst ArraySoundMap& arraySoundMapToCopy);
+    ArraySoundMap(const ArraySoundMap& arraySoundMapToCopy);
     ArraySoundMap& operator=(const SoundMap& arraySoundMapToCopy);
 
 public:
