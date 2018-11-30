@@ -9,7 +9,7 @@ Question::~Question(){
 
 }
 
-std::string Question::stringEdit(std::string toEdit, int index, std::string toInsert);
+std::string stringEdit(std::string toEdit, int index, std::string toInsert);
 
 //generates a new question, uses the soundMap to generate 3 random incorrect questions
 //the pair here is output from wordList originally, first string is the english word and second string is the correct phonetic translation
