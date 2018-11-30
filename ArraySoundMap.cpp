@@ -4,6 +4,7 @@
 
 #include "ArraySoundMap.h"
 #include "ArrayList.h"
+#include "LinkedList.h"
 #include <fstream>
 
 ArraySoundMap::ArraySoundMap() {
@@ -18,14 +19,6 @@ ArraySoundMap::~ArraySoundMap() {
 
 }
 
-std::string trim(std::string stringToTrim){
-
-}
-
-ArrayList<std::string> split(std::string stringToSplit){
-    
-}
-
 void ArraySoundMap::read() {
     std::string currentLine;
     std::ifstream file;
@@ -37,12 +30,13 @@ void ArraySoundMap::read() {
     while(currentLine.substr(0, 2) == "//" || currentLine.substr(0, 2) == "\r" ){
         std::getline(file, currentLine);
     }
-    soundArray = new ArrayList<Sound*>(std::stoi(currentLine));
+    //TODO: Change to Array List
+    soundArray = new LinkedList<Sound*>(); // Make sure to add the currentLine size
 
     getline(file,currentLine);
     while(currentLine.substr(0, 1) != "#") {
         if (currentLine.substr(0, 2) != "//" && currentLine.substr(0, 2) != "\r") {
-            soundArray->insertAtEnd(new Sound(currentLine));
+            soundArray->insertAtEnd(new Sound(trim(currentLine)));
         }
         getline(file, currentLine);
     }
@@ -50,7 +44,7 @@ void ArraySoundMap::read() {
     getline(file, currentLine);
     while(currentLine.substr(0, 1) != "#"){
         if (currentLine.substr(0, 2) != "//" && currentLine.substr(0, 2) != "\r") {
-            while
+            //soundArray->getValueAt(soundArray->find(c))
         }
         getline(file, currentLine);
     }
