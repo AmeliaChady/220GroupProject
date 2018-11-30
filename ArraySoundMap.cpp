@@ -18,6 +18,14 @@ ArraySoundMap::~ArraySoundMap() {
 
 }
 
+std::string trim(std::string stringToTrim){
+
+}
+
+ArrayList<std::string> split(std::string stringToSplit){
+    
+}
+
 void ArraySoundMap::read() {
     std::string currentLine;
     std::ifstream file;
@@ -42,7 +50,7 @@ void ArraySoundMap::read() {
     getline(file, currentLine);
     while(currentLine.substr(0, 1) != "#"){
         if (currentLine.substr(0, 2) != "//" && currentLine.substr(0, 2) != "\r") {
-            //Sound Connections
+            while
         }
         getline(file, currentLine);
     }
