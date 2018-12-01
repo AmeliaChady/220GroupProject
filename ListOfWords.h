@@ -13,7 +13,6 @@ private:
 public:
     ListOfWords(std::string fileName); //generates a list from the fileName
     std::pair<std::string, std::string> giveRandWord(); //outputs a random word in the wordBank
-    std::pair<std::string, std::string> giveAskedWord(std::string englishWord);//takes the english version of the word, if it's
-    //in the wordBank, otherwise throws an exception
+
 };
 #endif //INC_220GROUPPROJECT_LISTOFWORDS_H

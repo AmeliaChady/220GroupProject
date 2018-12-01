@@ -40,7 +40,8 @@ Question::Question(std::pair<std::string,std::string> word, ArraySoundMap* sound
     toInsert = toUse->getSimilarSymbol();
     toInsertChar = toInsert[0];
     this->wrongThree = stringEdit(correctAnswer, index, toInsertChar);
-    response = false;
+    correctOption = 1;
+
 
 
 }
@@ -125,3 +126,8 @@ std::string Question::outputQuestion(){
 bool Question::getResponse() {
     return response;
 }
+
+
+std::string Question::getAnswerString(int userAnswer){
+    return "";
+} //returns either correct, or incorrect- answer is " "
