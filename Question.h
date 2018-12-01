@@ -5,6 +5,8 @@
 #ifndef INC_220GROUPPROJECT_QUESTION_H
 #define INC_220GROUPPROJECT_QUESTION_H
 #include <cstdlib>
+#include <string>
+#include "ArraySoundMap.h"
 
 class Question{
 private:
@@ -13,7 +15,7 @@ private:
     std::string wrongOne;
     std::string wrongTwo;
     std::string wrongThree;
-    std::string stringEdit(std::string toEdit, int index, std::string toInsert);
+    std::string stringEdit(std::string toEdit, int index, char toInsert);
     bool response; //tracks if the user got the question wrong or right
 public:
     Question(std::pair<std::string,std::string> word, ArraySoundMap* soundMap); //generates a new question, uses the soundMap to generate 3 random incorrect questions

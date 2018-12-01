@@ -6,20 +6,42 @@
 #include "ArraySoundMap.h"
 
 
-std::string stringEdit(std::string toEdit, int index, std::string toInsert){
+std::string stringEdit(std::string toEdit, int index, char toInsert){
     std::string newString = toEdit;
     newString[index] = toInsert;
-    return stringEdit;
+    return newString;
 
 }
 
 //generates a new question, uses the soundMap to generate 3 random incorrect questions
 //the pair here is output from wordList originally, first string is the english word and second string is the correct phonetic translation
 Question::Question(std::pair<std::string,std::string> word, ArraySoundMap* soundMap){
-    this.englishWord = std::get<0>(word);
-    this.correctAnswer = std::get<1>(word);
-    std::string baseString = "Does this work lol";
-    baseString.copy()
+    this->englishWord = std::get<0>(word);
+    this->correctAnswer = std::get<1>(word);
+    int length = correctAnswer.size();
+    int index = rand() % length;
+    char character = correctAnswer[index];
+    std::string charAsString(1, character);
+    Sound* toUse = soundMap->getKey(charAsString);
+    std::string toInsert = toUse->getSimilarSymbol();
+    char toInsertChar = toInsert[0];
+    this->wrongOne = stringEdit(correctAnswer, index, toInsertChar);
+    index = rand() % length;
+    character = correctAnswer[index];
+    std::string charAsString2(1, character);
+    toUse = soundMap->getKey(charAsString);
+    toInsert = toUse->getSimilarSymbol();
+    toInsertChar = toInsert[0];
+    this->wrongTwo = stringEdit(correctAnswer, index, toInsertChar);
+    index = rand() % length;
+    character = correctAnswer[index];
+    std::string charAsString3(1, character);
+    toUse = soundMap->getKey(charAsString);
+    toInsert = toUse->getSimilarSymbol();
+    toInsertChar = toInsert[0];
+    this->wrongThree = stringEdit(correctAnswer, index, toInsertChar);
+    response = false;
+
 
 }
 //gives the use a multiple choice question, tells them if their answer is correct or not
