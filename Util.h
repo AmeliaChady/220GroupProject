@@ -1,5 +1,5 @@
 //
-// Created by Alex Chady on 11/30/2018.
+// Created by Amelia Chady on 11/30/2018.
 //
 
 #ifndef INC_220GROUPPROJECT_UTIL_H

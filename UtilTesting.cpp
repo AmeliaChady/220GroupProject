@@ -5,6 +5,38 @@
 #include <iostream>
 #include "Util.h"
 
+void trimTest(){
+    std::cout << "--Trim Tests--------" << std::endl;
+    int passes = 0;
+    int fails = 0;
+
+    // Test 1
+    if(trim("  a") == "a"){
+
+    }else{
+
+    }
+
+
+
+    // Test 2
+
+
+    // Test 3
+
+
+    //
+
+
+    std::cout << "Overall:" << std::endl;
+    std::cout << "Passed " << passes << " times." << std::endl;
+    std::cout << "Failed " << fails << " times." << std::endl;
+    std::cout << "--Done--------" << std::endl;
+}
+
+void splitTest(){
+
+}
 
 int main(){
     std::string lazyTest = "    a b c  d    \n";
