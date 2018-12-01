@@ -8,6 +8,9 @@
 #include "Util.h"
 
 std::string trim(std::string stringToTrim){
+    if(stringToTrim.length()==0){
+        return stringToTrim;
+    }
     while(stringToTrim.find(' ',0)==0){
         stringToTrim = stringToTrim.substr(1);
     }

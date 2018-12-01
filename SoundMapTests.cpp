@@ -117,7 +117,15 @@ void testSoundMap(){
         fails++;
     }
 
-    map->read();
+
+    try{
+        map->read();
+        std::cout << "passed" << std::endl;
+        passes++;
+    }catch(std::exception e){
+        std::cout << "failed" << std::endl;
+        fails++;
+    }
 
     if(map->getKey("A")->getSymbol()=="A"){
         std::cout << "passed" << std::endl;
@@ -142,6 +150,14 @@ void testSoundMap(){
     }catch(std::invalid_argument e){
         std::cout << "passed" << std::endl;
         passes++;
+    }
+
+    if(map->getKey("A")->getSimilarSymbol()=="B"){
+        std::cout << "passed" << std::endl;
+        passes++;
+    }else{
+        std::cout << "failed" << std::endl;
+        fails++;
     }
 
     std::cout << "Overall:" << std::endl;

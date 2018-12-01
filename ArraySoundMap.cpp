@@ -62,10 +62,13 @@ std::string ArraySoundMap::getFileName() {
 }
 
 Sound* ArraySoundMap::getKey(std::string key) {
+    key = trim(key);
     for(int i = 0; i < soundArray->itemCount(); i++){
         Sound* temp = soundArray->getValueAt(i);
-        if(temp->getSymbol()==key){
+        //std::cout << temp->getSymbol() << std::endl;
+        if(temp->getSymbol().substr(0,1)==key){
             return temp;
         }
     }
+    throw std::invalid_argument("Key doesn't exist");
 }
