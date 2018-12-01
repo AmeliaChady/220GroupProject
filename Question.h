@@ -25,7 +25,7 @@ public:
     std::string outputQuestion(); //outputs the question in a printout type of format, not sure if we need this functionality
     //but should be easy enough to do, basically a toString
     bool getResponse(); //outputs response
-    std::string getAnswerString();
+    std::string getAnswerString(int userAnswer); //returns either correct, or incorrect- answer is " "
 
 };
 #endif //INC_220GROUPPROJECT_QUESTION_H
