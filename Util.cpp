@@ -1,5 +1,5 @@
 //
-// Created by Alex Chady on 11/30/2018.
+// Created by Amelia Chady on 11/30/2018.
 //
 
 #include <string>
@@ -35,5 +35,5 @@ List<std::string>* split(std::string stringToSplit, std::string delim){
     }
 
 
-    return splitted;
+     return splitted;
 }
