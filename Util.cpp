@@ -53,7 +53,7 @@ List<std::string>* split(std::string stringToSplit, std::string delim){
     }
 
     if(splitted->itemCount()==0){
-        std::invalid_argument("stringToSplit only h delimiters");
+        std::invalid_argument("stringToSplit only has delimiters");
     }
 
 
