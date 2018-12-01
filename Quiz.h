@@ -21,6 +21,8 @@ private:
     virtual std::string getAndWriteAnswer()=0;
 
     int score;
+    int numQuestions;
+    int quizCap;
 
     //writes to file to store past tests
 
@@ -30,6 +32,7 @@ public:
 
     /*
      * creates Question object, asks question and passes resulting string up to UI
+     * throws std::out_of_range error if questionCounter is greater than or equal to number of questions in quiz
      *
      */
     virtual std::string presentQuestion(std::string word)=0;

@@ -7,6 +7,5 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(UserInterface UserInterface.cpp Util.cpp)
 
 add_executable(SoundMapTesting SoundMapTests.cpp ArraySoundMap.cpp Sound.cpp Util.cpp)
-add_executable(QuizTesting PresetQuiz.cpp RandomQuiz.cpp ListOfWordsChanger.cpp ListOfWordsChanger.h)
 add_executable(UtilTesting UtilTesting.cpp Util.cpp)
 add_executable(QuestionTesting Question.cpp QuestionTesting.cpp)
