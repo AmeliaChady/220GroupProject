@@ -11,13 +11,16 @@ std::string trim(std::string stringToTrim){
     while(stringToTrim.find(' ',0)==0){
         stringToTrim = stringToTrim.substr(1);
     }
-    while(stringToTrim.find_last_of(' ')){
+    while(stringToTrim.find_last_of(' ')==stringToTrim.length()-1
+        ||stringToTrim.find('\r')==stringToTrim.length()-1
+        ||stringToTrim.find('\n')==stringToTrim.length()-1){
         stringToTrim = stringToTrim.substr(0, stringToTrim.length()-1);
     }
     return stringToTrim;
 }
 
 List<std::string>* split(std::string stringToSplit, std::string delim){
+    trim(stringToSplit);
     List<std::string>* splitted = new LinkedList<std::string>();
     int delimIndex = stringToSplit.find(delim);
     while(delimIndex > -1){
@@ -27,4 +30,10 @@ List<std::string>* split(std::string stringToSplit, std::string delim){
         stringToSplit = stringToSplit.substr(delimIndex+1);
         delimIndex = stringToSplit.find(delim);
     }
+    if(stringToSplit.length()!=0){
+        splitted->insertAtEnd(stringToSplit);
+    }
+
+
+    return splitted;
 }

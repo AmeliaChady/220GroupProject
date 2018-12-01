@@ -16,6 +16,7 @@ private:
 
     ArraySoundMap(const ArraySoundMap& arraySoundMapToCopy);
     ArraySoundMap& operator=(const SoundMap& arraySoundMapToCopy);
+    
 
 public:
     ArraySoundMap();

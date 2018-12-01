@@ -5,6 +5,7 @@
 #include "ArraySoundMap.h"
 #include "ArrayList.h"
 #include "LinkedList.h"
+#include "Util.h"
 #include <fstream>
 
 ArraySoundMap::ArraySoundMap() {
@@ -44,7 +45,11 @@ void ArraySoundMap::read() {
     getline(file, currentLine);
     while(currentLine.substr(0, 1) != "#"){
         if (currentLine.substr(0, 2) != "//" && currentLine.substr(0, 2) != "\r") {
-            //soundArray->getValueAt(soundArray->find(c))
+            List<std::string>* splitted = split(currentLine, " ");
+            Sound* tempBase = getKey(splitted->getValueAt(0));
+            for(int i = 1; i < splitted->itemCount(); i++) {
+                tempBase->addConnection(getKey(splitted->getValueAt(i)));
+            }
         }
         getline(file, currentLine);
     }
@@ -57,4 +62,10 @@ std::string ArraySoundMap::getFileName() {
 }
 
 Sound* ArraySoundMap::getKey(std::string key) {
+    for(int i = 0; i < soundArray->itemCount(); i++){
+        Sound* temp = soundArray->getValueAt(i);
+        if(temp->getSymbol()==key){
+            return temp;
+        }
+    }
 }
