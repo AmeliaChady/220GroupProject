@@ -15,16 +15,29 @@ private:
      */
     virtual void makeQuestion(std::string word)=0;
 
+    /*
+     * retrieves answer from Question, writes to a file, send to UI
+     */
+    virtual std::string getAndWriteAnswer()=0;
+
+    int score;
+
+    //writes to file to store past tests
+
 public:
     //destructor to be declared in child classes
     virtual ~Quiz()=0;
 
     /*
-     * @input takes word passed from ListOfWords
-     * @returns Question object (currently void bc class doesn't exist yet
+     * creates Question object, asks question and passes resulting string up to UI
      *
      */
-    virtual void genQuestion(std::string word)=0;
+    virtual std::string presentQuestion(std::string word)=0;
+
+    /*
+     * given answer choice (1,2,3,4), passes
+     */
+    virtual std::string checkAnswer(int answerChoice)=0;
 
 
 
