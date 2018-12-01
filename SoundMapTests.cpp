@@ -107,9 +107,9 @@ void testSoundMap(){
         fails++;
     }
 
-    SoundMap* map = new ArraySoundMap("testMap.txt");
+    SoundMap* map = new ArraySoundMap("testSounds.txt");
 
-    if(map->getFileName() == "testMap.txt"){
+    if(map->getFileName() == "testSounds.txt"){
         std::cout << "passed" << std::endl;
         passes++;
     }else{

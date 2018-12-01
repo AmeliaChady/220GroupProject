@@ -58,7 +58,7 @@ void ArraySoundMap::read() {
 }
 
 std::string ArraySoundMap::getFileName() {
-    return "not implemented";
+    return fileName;
 }
 
 Sound* ArraySoundMap::getKey(std::string key) {
