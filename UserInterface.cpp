@@ -68,22 +68,53 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
         printer = false;
     }
 
-    Quiz quiz =
+    Quiz* quiz;
+    if(preset){
+        // Preset Quiz needs a file name in the constructor
+        //quiz = new PresetQuiz(filename);
+    }else{
+        // Random Quiz also needs a file name in the constructor
+        //quiz = new RandomQuiz(filename, 10);
+    }
 
-    std::cout << " >";
-    // Get Input
-    std::string userInput;
-    std::getline(std::cin, userInput);
-    List<std::string>* splitInput = split(userInput, " ");
-    // Check letter or number answer
+    while(state==1){
+        // TODO: Get question and print     quiz->getNextQuestion()? In a try-catch?
+        std::cout << " >";
+        // Get Input
+        std::string userInput;
+        std::getline(std::cin, userInput);
+        try{
+            List<std::string> *splitInput = split(userInput, " ");
+            // Possible functions
+            if(splitInput->getValueAt(0)=="1"){
+                //TODO
+            }else if(splitInput->getValueAt(0)=="2"){
+                //TODO
+            }else if(splitInput->getValueAt(0)=="3"){
+                //TODO
+            }else if(splitInput->getValueAt(0)=="4"){
+                //TODO
+            }else if(splitInput->getValueAt(0)=="help"){
+                //TODO
+            }else if(splitInput->getValueAt(0)=="save"){
+                //TODO
+            }else if(splitInput->getValueAt(0)=="exit"){
+                //TODO
+            }else{
+                std::cout << "not valid command. type \"help\" for help" << std::endl;
+            }
+        }catch(std::invalid_argument){
 
-    // Check help
+        }
+        // Check letter or number answer
 
-    // Check save
+        // Check help
 
-    // Check exit
+        // Check save
 
+        // Check exit
 
+    }
 }
 
 void editState(int& state, bool& printer){
