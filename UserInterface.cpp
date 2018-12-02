@@ -6,44 +6,72 @@
 #include <iostream>
 
 
-void menuState(int& state){
+void menuState(int& state, std::string& filename, bool& print){
     // Text Blurb?
-    std::cout << "Main Menu Motherfuckers" << std::endl;
-    std::cout << "Input: ";
+    if(print) {
+        std::cout << "--Main Menu--------" << std::endl;
+
+        print = false;
+    }
+    std::cout << " >";
+    // Get Input
+    std::string userInput;
+    std::getline(std::cin, userInput);
+
+    try{
+        List<std::string>* splitInput = split(userInput, " ");
+        // Possible Functions
+        if(splitInput->itemCount()!=0) {
+            if(splitInput->getValueAt(0) == "start"){
+                // Check start
+                state = 1;
+            }else if(splitInput->getValueAt(0) == "load") { // TODO: Figure out a better name
+                // Check load <filename>
+                try{
+                    filename = splitInput->getValueAt(1);
+                    std::cout << "Set quiz as: " << filename << std::endl;
+
+                }catch(std::out_of_range&){
+                    std::cout << "Filename needed!" << std::endl;
+                }
+            }else if(splitInput->getValueAt(0) == "edit"){
+                // Check edit
+                state = 2;
+                print = true;
+            }else if(splitInput->getValueAt(0) == "help"){
+                // Check help
+                std::cout << "todo" << std::endl;
+            }else if(splitInput->getValueAt(0) == "quit"){
+                // Check quit
+                state = -1;
+                print = true;
+            }else{
+                std::cout << "not valid command. type \"help\" for help";
+            }
+        }
+        delete splitInput;
+    }catch(std::invalid_argument&){
+        //std::cout << "Invalid!" << std::endl;
+    }
+
+
+}
+
+void quizState(int& state, std::string& filename, bool& printer){
+    // Text Blurb?
+    if(printer){
+        std::cout << "--Quiz--------" << std::endl;
+        printer = false;
+    }
+
+    std::cout << " >";
     // Get Input
     std::string userInput;
     std::getline(std::cin, userInput);
     List<std::string>* splitInput = split(userInput, " ");
-    if(splitInput->itemCount()!=0) {
-        // Check start
-        if(splitInput->getValueAt(0) == "start"){
-            state = 1;
-        }
+    //Check letter or number answer
 
-        // Check load <filename>
-
-
-        // Check edit
-        if(splitInput->getValueAt(0)=="edit"){
-            state = 2;
-        }
-
-        // Check help
-
-
-        // Check quit
-        if(splitInput->getValueAt(0)=="quit"){
-            state = -1;
-        }
-    }
-}
-
-void quizState(int& state){
-    // Text Blurb?
-
-    // Get Input
-
-    // Check letter or number answer
+    // Check help
 
     // Check save
 
@@ -52,19 +80,61 @@ void quizState(int& state){
 
 }
 
-void editState(int& state){
+void editState(int& state, std::string& filename, bool& printer){
+    // Text Blurb?
+    std::cout << "--Editor--------" << std::endl;
+    std::cout << " >";
+    // Get Input
+    std::string userInput;
+    std::getline(std::cin, userInput);
 
+
+    try{
+        List<std::string>* splitInput = split(userInput, " ");
+        // Possible Functions
+        if(splitInput->itemCount()!=0) {
+            if(splitInput->getValueAt(0) == "save"){
+                // Check save <filename>
+                ge
+            }else if(splitInput->getValueAt(0) == "load"){
+                // Check load <filename>
+            }else if(splitInput->getValueAt(0) == "add"){
+                // Check add <spelling> <phonetic>
+            }else if(splitInput->getValueAt(0) == "remove"){
+                // Check remove <spelling>
+                try{
+                    std::string removedWord = splitInput->getValueAt(1);
+                }catch(std::out_of_range){
+                    std::cout << "remove requires a word to remove" << std::endl;
+                }
+            }else if(splitInput->getValueAt(0) == "help"){
+                // Check help
+                std::cout << "todo" << std::endl;
+            }else if(splitInput->getValueAt(0) == "exit"){
+                // Check exit
+                state = 0;
+            }else{
+                std::cout << "not valid command. type \"help\" for help";
+            }
+        }
+    }catch(std::invalid_argument) {
+
+    }
 }
 
 int main(){
+
+    std::string filename = "default";
     int state = 0;
+    bool printer = true;
+
     while(state>=0){
         if(state==0){
-            menuState(state);
+            menuState(state, filename, printer);
         }else if(state==1){
-            quizState(state);
+            quizState(state, filename, printer);
         }else if(state==2){
-            editState(state);
+            editState(state, filename, printer);
         }
     }
     std::cout << "Later, ya hopefully more memorized nerd" << std::endl;
