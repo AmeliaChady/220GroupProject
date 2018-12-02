@@ -6,6 +6,7 @@
 #include "ArraySoundMap.h"
 
 
+
 std::string stringEdit(std::string toEdit, int index, char toInsert){
     std::string newString = toEdit;
     newString[index] = toInsert;
@@ -13,9 +14,18 @@ std::string stringEdit(std::string toEdit, int index, char toInsert){
 
 }
 
+Question::Question(){
+    englishWord = "";
+    correctAnswer = "";
+    wrongOne = "";
+    wrongTwo = "";
+    wrongThree = "";
+    correctOption = 0;
+}
+
 //generates a new question, uses the soundMap to generate 3 random incorrect questions
 //the pair here is output from wordList originally, first string is the english word and second string is the correct phonetic translation
-Question::Question(std::pair<std::string,std::string> word, ArraySoundMap* soundMap){
+Question::Question(const std::pair<std::string,std::string> word, ArraySoundMap* soundMap){
     this->englishWord = std::get<0>(word);
     this->correctAnswer = std::get<1>(word);
     int length = correctAnswer.size();
@@ -45,89 +55,67 @@ Question::Question(std::pair<std::string,std::string> word, ArraySoundMap* sound
 
 
 }
-//gives the use a multiple choice question, tells them if their answer is correct or not
-void Question::ask(){
-    int order = rand() % 4;
-    if (order == 0){
-        std::cout<<englishWord<<std::endl;
-        std::cout<<"A. " + correctAnswer<<std::endl;
-        std::cout<<"B. " + wrongOne<<std::endl;
-        std::cout<<"C. " + wrongTwo<<std::endl;
-        std::cout<<"D. " + wrongThree<<std::endl;
-        std::string userAnswer;
-        std::cin >> userAnswer;
-        if (userAnswer == "A"){
-            response = true;
-            std::cout<< "Correct" << std::endl;
-        }
-        else{
-            response = false;
-            std::cout<< "Incorrect" <<std::endl;
-        }
-    }
-    if (order == 1){
-        std::cout<<englishWord<<std::endl;
-        std::cout<<"A. " + wrongOne<<std::endl;
-        std::cout<<"B. " + correctAnswer<<std::endl;
-        std::cout<<"C. " + wrongTwo<<std::endl;
-        std::cout<<"D. " + wrongThree<<std::endl;
-        std::string userAnswer;
-        std::cin >> userAnswer;
-        if (userAnswer == "B"){
-            response = true;
-            std::cout<< "Correct" << std::endl;
-        }
-        else{
-            response = false;
-            std::cout<< "Incorrect" <<std::endl;
-        }
-    }
-    if (order == 2){
-        std::cout<<englishWord<<std::endl;
-        std::cout<<"A. " + wrongOne<<std::endl;
-        std::cout<<"B. " + wrongTwo<<std::endl;
-        std::cout<<"C. " + correctAnswer<<std::endl;
-        std::cout<<"D. " + wrongThree<<std::endl;
-        std::string userAnswer;
-        std::cin >> userAnswer;
-        if (userAnswer == "C"){
-            response = true;
-            std::cout<< "Correct" << std::endl;
-        }
-        else{
-            response = false;
-            std::cout<< "Incorrect" <<std::endl;
-        }
-    }
-    if (order == 3){
-        std::cout<<englishWord<<std::endl;
-        std::cout<<"A. " + wrongOne<<std::endl;
-        std::cout<<"B. " + wrongTwo<<std::endl;
-        std::cout<<"C. " + wrongThree<<std::endl;
-        std::cout<<"D. " + correctAnswer<<std::endl;
-        std::string userAnswer;
-        std::cin >> userAnswer;
-        if (userAnswer == "D"){
-            response = true;
-            std::cout<< "Correct" << std::endl;
-        }
-        else{
-            response = false;
-            std::cout<< "Incorrect" <<std::endl;
-        }
-    }
+Question::Question(std::pair<std::string, std::string> word, std::string wrongOneIn, std::string wrongTwoIn, std::string wrongThreeIn){
+    this->englishWord = std::get<0>(word);
+    this->correctAnswer = std::get<1>(word);
+    this->wrongOne = wrongOneIn;
+    this->wrongTwo = wrongTwoIn;
+    this->wrongThree = wrongThreeIn;
+
 }
-//outputs the question in a printout type of format, not sure if we need this functionality
-//but should be easy enough to do, basically a toString
+
 std::string Question::outputQuestion(){
+    int order = rand() % 4;
+    std::string questionStr = "";
+    if (order == 0) {
+        questionStr = this->englishWord + "/n";
+        questionStr = questionStr + "1. " + this->correctAnswer + "/n";
+        questionStr = questionStr + "2. " + this->wrongOne + "/n'";
+        questionStr = questionStr + "3. " + this->wrongTwo + "/n";
+        questionStr = questionStr + "4. " + this->wrongThree + "/n";
+
+        this->correctOption = 1;
+    }
+
+    else if (order == 1) {
+        questionStr = this->englishWord + "/n";
+        questionStr = questionStr + "1. " + this->wrongOne + "/n";
+        questionStr = questionStr + "2. " + this->correctAnswer + "/n'";
+        questionStr = questionStr + "3. " + this->wrongTwo + "/n";
+        questionStr = questionStr + "4. " + this->wrongThree + "/n";
+        this->correctOption = 2;
+    }
+    else if (order == 2) {
+        questionStr = this->englishWord + "/n";
+        questionStr = questionStr + "1. " + this->wrongOne + "/n";
+        questionStr = questionStr + "2. " + this->correctAnswer + "/n'";
+        questionStr = questionStr + "3. " + this->wrongTwo + "/n";
+        questionStr = questionStr + "4. " + this->wrongThree + "/n";
+        this->correctOption = 3;
+    }
+    else { //order == 3
+        questionStr = this->englishWord + "/n";
+        questionStr = questionStr + "1. " + this->wrongOne + "/n";
+        questionStr = questionStr + "2. " + this->correctAnswer + "/n'";
+        questionStr = questionStr + "3. " + this->wrongTwo + "/n";
+        questionStr = questionStr + "4. " + this->wrongThree + "/n";
+        this->correctOption = 4;
+    }
+    return questionStr;
+
 
 }
 
-bool Question::getResponse() {
-    return response;
-}
+
 
 
 std::string Question::getAnswerString(int userAnswer){
-    return "";
+    std::string answerString = "";
+    if (userAnswer == this->correctOption){
+        answerString = "Correct.";
+    }
+    else{ //answer is wrong
+        answerString = "Incorrect: Correct answer is - " + this->correctAnswer;
+    }
+    return answerString;
 } //returns either correct, or incorrect- answer is " "
