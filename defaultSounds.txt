@@ -2,12 +2,78 @@
 // This number is the amount of sounds
 40
 // These are the sounds, separated by spaces or newlines until # shows up
-
-
-
+// Consonants
+p
+b
+m
+.w
+f
+v
+T
+D
+t
+d
+s
+z
+n
+l
+.S
+.Z
+S
+Z
+R
+j
+k
+g
+N
+h
+// Vowels
+i
+I
+e
+E
+&
+)
+u
+U
+o
+^
+O
+A
 #
 // These are the connections between sounds
 // Continues until the # shows up
-
-
+// Consonants
+p b t d k g m .w
+b t d k g m .w
+m n N .w
+.w R j
+f v T D s z S Z h
+v T D s z S Z h
+T D s z S Z h
+D s z S Z h
+t d k g s z n l
+d k g s z n l
+s z S Z h n l
+z S Z h n l
+n N
+.S .Z S Z R
+.Z S Z R
+S Z h R
+Z h R
+R j
+k g N
+g N
+//Vowels
+i I e E & u
+I e E & U o
+e ) E & ^ O o
+E ) & ^ O o
+& ) A ^ o
+) u U ^ O o
+u U ^ O o
+U ^ O o
+o ^ O A
+^ O A
+O A
 #
