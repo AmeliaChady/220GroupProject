@@ -11,7 +11,8 @@ private:
     std::pair<std::string,std::string>* wordBank; //array of pairs, each with the first entry being the english word and second being phonetic
     std::string fileName; //name of the csv file that the list comes from
 public:
-    ListOfWords(std::string fileName); //generates a list from the fileName
+    ListOfWords();
+    ListOfWords(std::string fileNameIn); //generates a list from the fileName
     std::pair<std::string, std::string> giveRandWord(); //outputs a random word in the wordBank
 
 };
