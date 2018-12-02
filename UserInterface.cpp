@@ -3,10 +3,13 @@
 //
 #include "Util.h"
 #include "List.h"
+#include "Quiz.h"
+#include "RandomQuiz.h"
+#include "PresetQuiz.h"
 #include <iostream>
 
 
-void menuState(int& state, std::string& filename, bool& print){
+void menuState(int& state, std::string& filename, bool& print, bool& preset){
     // Text Blurb?
     if(print) {
         std::cout << "--Main Menu--------" << std::endl;
@@ -23,7 +26,7 @@ void menuState(int& state, std::string& filename, bool& print){
         // Possible Functions
         if(splitInput->itemCount()!=0) {
             if(splitInput->getValueAt(0) == "start"){
-                // Check start
+                // Check start <preset or random>
                 state = 1;
             }else if(splitInput->getValueAt(0) == "load") { // TODO: Figure out a better name
                 // Check load <filename>
@@ -58,19 +61,21 @@ void menuState(int& state, std::string& filename, bool& print){
 
 }
 
-void quizState(int& state, std::string& filename, bool& printer){
+void quizState(int& state, std::string& filename, bool& printer, bool& preset){
     // Text Blurb?
     if(printer){
         std::cout << "--Quiz--------" << std::endl;
         printer = false;
     }
 
+    Quiz quiz =
+
     std::cout << " >";
     // Get Input
     std::string userInput;
     std::getline(std::cin, userInput);
     List<std::string>* splitInput = split(userInput, " ");
-    //Check letter or number answer
+    // Check letter or number answer
 
     // Check help
 
@@ -157,12 +162,13 @@ int main(){
     std::string filename = "default";
     int state = 0;
     bool printer = true;
+    bool preset = false;
 
     while(state>=0){
         if(state==0){
-            menuState(state, filename, printer);
+            menuState(state, filename, printer, preset);
         }else if(state==1){
-            quizState(state, filename, printer);
+            quizState(state, filename, printer, preset);
         }else if(state==2){
             editState(state, printer);
         }
