@@ -9,7 +9,8 @@
 #include "Quiz.h"
 
 class PresetQuiz: public Quiz {
-
+public:
+    PresetQuiz(std::string fileName);
 };
 
 #endif //INC_220GROUPPROJECT_PRESETQUIZ_H

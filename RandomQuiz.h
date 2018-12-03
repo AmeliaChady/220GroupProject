@@ -12,10 +12,7 @@ class RandomQuiz : public Quiz {
 private:
     void makeQuestion(std::string word);
 public:
-    RandomQuiz(int numQuestions);
-    ~RandomQuiz();
-    RandomQuiz(const RandomQuiz& quizToCopy);
-    RandomQuiz& operator=(const RandomQuiz& quizToCopy);
+    RandomQuiz(std::string fileName, int numQuestions);
 
 };
 #endif //INC_220GROUPPROJECT_RANDOMQUIZ_H

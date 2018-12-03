@@ -10,6 +10,10 @@
 
 class ListOfWordsChanger {
 public:
+    //default constructor
+    ListOfWordsChanger();
+    //constructor for specific file
+    ListOfWordsChanger(std::string fileName);
     //adds directly into .csv file
     void addWord(std::string word, std::string phoneticSpelling);
     //removes from file
