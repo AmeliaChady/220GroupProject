@@ -3,3 +3,25 @@
 //
 
 #include "RandomQuiz.h"
+#include <fstream>
+#include <iostream>
+
+//private
+void RandomQuiz::makeQuestion(std::string word) {
+
+}
+
+std::string RandomQuiz::getAndWriteAnswer() {
+
+}
+
+//public
+RandomQuiz::RandomQuiz(std::string fileName, int numQuestions) {
+
+    std::string timeDate = std::to_string(std::chrono::system_clock::now());
+    ofstream outf("Random Quiz " + timeDate + ".txt");
+
+
+
+
+}
