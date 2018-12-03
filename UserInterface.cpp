@@ -96,25 +96,27 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
                 //TODO
             }else if(splitInput->getValueAt(0)=="help"){
                 //TODO
+                std::cout << "todo" << std::endl;
             }else if(splitInput->getValueAt(0)=="save"){
-                //TODO
+                // Check save <filename>
+                try{
+                    std::string saveFilename = splitInput->getValueAt(1);
+                    //TODO something with quizzes
+                }catch(std::out_of_range&){
+                    std::cout << "Filename needed!" << std::endl;
+                }
             }else if(splitInput->getValueAt(0)=="exit"){
-                //TODO
+                // Check exit
+                state = 0;
             }else{
                 std::cout << "not valid command. type \"help\" for help" << std::endl;
             }
-        }catch(std::invalid_argument){
+        }catch(std::invalid_argument&){
 
         }
-        // Check letter or number answer
-
-        // Check help
-
-        // Check save
-
-        // Check exit
-
     }
+
+    delete quiz;
 }
 
 void editState(int& state, bool& printer){
