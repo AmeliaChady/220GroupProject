@@ -7,7 +7,7 @@
 
 
 
-std::string stringEdit(std::string toEdit, int index, char toInsert){
+std::string Question::stringEdit(std::string toEdit, int index, char toInsert){
     std::string newString = toEdit;
     newString[index] = toInsert;
     return newString;
@@ -35,21 +35,21 @@ Question::Question(const std::pair<std::string,std::string> word, ArraySoundMap*
     Sound* toUse = soundMap->getKey(charAsString);
     std::string toInsert = toUse->getSimilarSymbol();
     char toInsertChar = toInsert[0];
-    this->wrongOne = stringEdit(correctAnswer, index, toInsertChar);
+    this->wrongOne = this->stringEdit(correctAnswer, index, toInsertChar);
     index = rand() % length;
     character = correctAnswer[index];
     std::string charAsString2(1, character);
     toUse = soundMap->getKey(charAsString);
     toInsert = toUse->getSimilarSymbol();
     toInsertChar = toInsert[0];
-    this->wrongTwo = stringEdit(correctAnswer, index, toInsertChar);
+    this->wrongTwo = this->stringEdit(correctAnswer, index, toInsertChar);
     index = rand() % length;
     character = correctAnswer[index];
     std::string charAsString3(1, character);
     toUse = soundMap->getKey(charAsString);
     toInsert = toUse->getSimilarSymbol();
     toInsertChar = toInsert[0];
-    this->wrongThree = stringEdit(correctAnswer, index, toInsertChar);
+    this->wrongThree = this->stringEdit(correctAnswer, index, toInsertChar);
     correctOption = 1;
 
 
@@ -68,37 +68,37 @@ std::string Question::outputQuestion(){
     int order = rand() % 4;
     std::string questionStr = "";
     if (order == 0) {
-        questionStr = this->englishWord + "/n";
-        questionStr = questionStr + "1. " + this->correctAnswer + "/n";
-        questionStr = questionStr + "2. " + this->wrongOne + "/n'";
-        questionStr = questionStr + "3. " + this->wrongTwo + "/n";
-        questionStr = questionStr + "4. " + this->wrongThree + "/n";
+        questionStr = this->englishWord + "\n";
+        questionStr = questionStr + "1. " + this->correctAnswer + "\n";
+        questionStr = questionStr + "2. " + this->wrongOne + "\n";
+        questionStr = questionStr + "3. " + this->wrongTwo + "\n";
+        questionStr = questionStr + "4. " + this->wrongThree + "\n";
 
         this->correctOption = 1;
     }
 
     else if (order == 1) {
-        questionStr = this->englishWord + "/n";
-        questionStr = questionStr + "1. " + this->wrongOne + "/n";
-        questionStr = questionStr + "2. " + this->correctAnswer + "/n'";
-        questionStr = questionStr + "3. " + this->wrongTwo + "/n";
-        questionStr = questionStr + "4. " + this->wrongThree + "/n";
+        questionStr = this->englishWord + "\n";
+        questionStr = questionStr + "1. " + this->wrongOne + "\n";
+        questionStr = questionStr + "2. " + this->correctAnswer + "\n";
+        questionStr = questionStr + "3. " + this->wrongTwo + "\n";
+        questionStr = questionStr + "4. " + this->wrongThree + "\n";
         this->correctOption = 2;
     }
     else if (order == 2) {
-        questionStr = this->englishWord + "/n";
-        questionStr = questionStr + "1. " + this->wrongOne + "/n";
-        questionStr = questionStr + "2. " + this->correctAnswer + "/n'";
-        questionStr = questionStr + "3. " + this->wrongTwo + "/n";
-        questionStr = questionStr + "4. " + this->wrongThree + "/n";
+        questionStr = this->englishWord + "\n";
+        questionStr = questionStr + "1. " + this->wrongOne + "\n";
+        questionStr = questionStr + "2. " + this->correctAnswer + "\n";
+        questionStr = questionStr + "3. " + this->wrongTwo + "\n";
+        questionStr = questionStr + "4. " + this->wrongThree + "\n";
         this->correctOption = 3;
     }
     else { //order == 3
-        questionStr = this->englishWord + "/n";
-        questionStr = questionStr + "1. " + this->wrongOne + "/n";
-        questionStr = questionStr + "2. " + this->correctAnswer + "/n'";
-        questionStr = questionStr + "3. " + this->wrongTwo + "/n";
-        questionStr = questionStr + "4. " + this->wrongThree + "/n";
+        questionStr = this->englishWord + "\n";
+        questionStr = questionStr + "1. " + this->wrongOne + "\n";
+        questionStr = questionStr + "2. " + this->correctAnswer + "\n";
+        questionStr = questionStr + "3. " + this->wrongTwo + "\n";
+        questionStr = questionStr + "4. " + this->wrongThree + "\n";
         this->correctOption = 4;
     }
     return questionStr;

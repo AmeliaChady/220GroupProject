@@ -5,10 +5,11 @@
 #ifndef INC_220GROUPPROJECT_LISTOFWORDS_H
 #define INC_220GROUPPROJECT_LISTOFWORDS_H
 #include <cstdlib>
+#include "ArrayList.h"
 
 class ListOfWords{
 private:
-    std::pair<std::string,std::string>* wordBank; //array of pairs, each with the first entry being the english word and second being phonetic
+    ArrayList<std::pair<std::string,std::string>>* wordBank; //array of pairs, each with the first entry being the english word and second being phonetic
     std::string fileName; //name of the csv file that the list comes from
 public:
     ListOfWords();

@@ -8,4 +8,4 @@ add_executable(UserInterface UserInterface.cpp Util.cpp)
 
 add_executable(SoundMapTesting SoundMapTests.cpp ArraySoundMap.cpp Sound.cpp Util.cpp)
 add_executable(UtilTesting UtilTesting.cpp Util.cpp)
-add_executable(QuestionTesting Question.cpp QuestionTesting.cpp)
+add_executable(QuestionTesting Question.cpp QuestionTesting.cpp ArrayList.inl ArraySoundMap.cpp ListOfWords.cpp Sound.cpp Util.cpp)
