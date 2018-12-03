@@ -14,16 +14,17 @@ ListOfWords::ListOfWords(){
     fileName = "";
 }
 ListOfWords::ListOfWords(std::string fileNameIn){
-    std::ifstream* listInput = new std::ifstream(fileName);
+    std::ifstream listInput(fileNameIn);
     wordBank = new ArrayList<std::pair<std::string, std::string>>();
     std::string inputStr;
     std::pair<std::string, std::string> inputPair;
     while (listInput){
         std::string inputStr;
-        *listInput >> inputStr;
+        getline(listInput, inputStr);
         List<std::string>* englishAndPhonetic = split(inputStr, ",");
         inputPair = std::make_pair(englishAndPhonetic->getValueAt(0), englishAndPhonetic->getValueAt(1));
         wordBank->insertAtEnd(inputPair);
+
     }
     fileName = fileNameIn;
 
