@@ -9,6 +9,14 @@
 #include <iostream>
 
 
+// Tim's TODO:
+// TODO: PresetQuiz constructor with a filename
+// TODO: RandomQuiz constructor with a filename & question count
+// TODO: A way to save quizzes, with an inputted filename
+// TODO: ListOfWordsChanger constructor with a filename
+// TODO: ListOfWordsChanger save function with a filename
+
+
 void menuState(int& state, std::string& filename, bool& print, bool& preset){
     // Text Blurb?
     if(print) {
@@ -77,7 +85,12 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
         //quiz = new RandomQuiz(filename, 10);
     }
 
+    bool getNextQuestion = true;
+    std::string question = "";
     while(state==1){
+        if(getNextQuestion){
+            //question =
+        }
         // TODO: Get question and print     quiz->getNextQuestion()? In a try-catch?
         std::cout << " >";
         // Get Input
@@ -88,12 +101,16 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
             // Possible functions
             if(splitInput->getValueAt(0)=="1"){
                 //TODO
+                getNextQuestion = true;
             }else if(splitInput->getValueAt(0)=="2"){
                 //TODO
+                getNextQuestion = true;
             }else if(splitInput->getValueAt(0)=="3"){
                 //TODO
+                getNextQuestion = true;
             }else if(splitInput->getValueAt(0)=="4"){
                 //TODO
+                getNextQuestion = true;
             }else if(splitInput->getValueAt(0)=="help"){
                 //TODO
                 std::cout << "todo" << std::endl;
