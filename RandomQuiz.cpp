@@ -19,7 +19,7 @@ std::string RandomQuiz::getAndWriteAnswer() {
 RandomQuiz::RandomQuiz(std::string fileName, int numQuestions) {
 
     std::string timeDate = std::to_string(std::chrono::system_clock::now());
-    ofstream outf("Random Quiz " + timeDate + ".txt");
+    std::ofstream outf("Random Quiz " + timeDate + ".txt");
 
 
 
