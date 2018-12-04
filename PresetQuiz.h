@@ -16,6 +16,7 @@ public:
     std::string presentQuestion();
     std::string checkAnswer(int answerChoice);
     void saveQuiz(std::string fileName);
+    std::string getScore();
 };
 
 #endif //INC_220GROUPPROJECT_PRESETQUIZ_H

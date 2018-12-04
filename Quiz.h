@@ -42,6 +42,8 @@ public:
 
     virtual void saveQuiz(std::string fileName)=0;
 
+    virtual std::string getScore()=0;
+
 
 };
 #endif //INC_220GROUPPROJECT_QUIZ_H

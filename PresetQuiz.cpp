@@ -14,14 +14,18 @@ std::string PresetQuiz::makeQuestion(const std::pair<std::string, std::string> p
 //public
 PresetQuiz::PresetQuiz(std::string fileName){
     this->quizBank = new ListOfWords(fileName);
+    this->quizCap = 10;
+    this->score = 0;
+    this->answQuestions = 0;
+    this->workingMap = new ArraySoundMap();
+    this->currQuestion = nullptr;
 }
 
 std::string PresetQuiz::presentQuestion(){
     if (answQuestions < quizCap){
-        std::pair<std::string, std::string> holdForQuestion;
-        //TODO read in line from file
+        std::pair<std::string, std::string> holdForQuestion = quizBank->giveWordAtIndex(answQuestions);
         std::string holdForUI = makeQuestion(holdForQuestion);
-        outf << holdForUI << std::endl;
+        //outf << holdForUI << "/n";
         answQuestions++;
         return holdForUI;
     } else {
@@ -36,5 +40,10 @@ std::string PresetQuiz::checkAnswer(int answerChoice){
 }
 
 void PresetQuiz::saveQuiz(std::string fileName){
+    //TODO write score to quiz
+    //TODO close file
+}
 
+std::string PresetQuiz::getScore(){
+    return "Score: " + std::to_string(score);
 }

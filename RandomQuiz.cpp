@@ -16,7 +16,7 @@ std::string RandomQuiz::makeQuestion(const std::pair<std::string, std::string> p
 
 //public
 RandomQuiz::RandomQuiz(std::string fileName, int numQuestions) {
-    outf(fileName);
+    //this->outf = outf(fileName);
     this->quizBank = new ListOfWords(fileName);
     this->quizCap = numQuestions;
     this->workingMap = new ArraySoundMap();
@@ -44,5 +44,10 @@ std::string RandomQuiz::checkAnswer(int answerChoice) {
 }
 
 void RandomQuiz::saveQuiz(std::string fileName){
+    //TODO write score to quiz
+    //TODO close file
+}
 
+std::string RandomQuiz::getScore(){
+    return "Score: " + std::to_string(score);
 }
