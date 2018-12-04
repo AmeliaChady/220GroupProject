@@ -4,7 +4,7 @@ project(220GroupProject)
 set(CMAKE_CXX_STANDARD 14)
 
 
-add_executable(UserInterface UserInterface.cpp Util.cpp ListOfWords.cpp ListOfWordsChanger.cpp PresetQuiz.cpp Question.cpp ArraySoundMap.cpp RandomQuiz.cpp Sound.cpp)
+add_executable(UserInterface UserInterface.cpp Util.cpp ListOfWords.cpp ListOfWordsChanger.cpp RandomQuiz.cpp PresetQuiz.cpp Question.cpp ArraySoundMap.cpp  Sound.cpp)
 
 add_executable(SoundMapTesting SoundMapTests.cpp ArraySoundMap.cpp Sound.cpp Util.cpp)
 add_executable(UtilTesting UtilTesting.cpp Util.cpp)

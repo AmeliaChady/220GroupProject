@@ -20,6 +20,7 @@ RandomQuiz::RandomQuiz(std::string fileName, int numQuestions) {
     this->quizBank = new ListOfWords(fileName);
     this->quizCap = numQuestions;
     this->workingMap = new ArraySoundMap();
+    workingMap->read();
     this->currQuestion = nullptr;
 
 }

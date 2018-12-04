@@ -4,7 +4,7 @@
 
 #include "Question.h"
 #include "ArraySoundMap.h"
-
+#include "Util.h"
 
 
 std::string Question::stringEdit(std::string toEdit, int index, char toInsert){
@@ -26,8 +26,8 @@ Question::Question(){
 //generates a new question, uses the soundMap to generate 3 random incorrect questions
 //the pair here is output from wordList originally, first string is the english word and second string is the correct phonetic translation
 Question::Question(const std::pair<std::string,std::string> word, SoundMap* soundMap){
-    this->englishWord = std::get<0>(word);
-    this->correctAnswer = std::get<1>(word);
+    this->englishWord = trim(std::get<0>(word));
+    this->correctAnswer = trim(std::get<1>(word));
     int length = correctAnswer.size();
     int index = rand() % length;
     char character = correctAnswer[index];

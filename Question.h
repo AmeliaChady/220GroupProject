@@ -5,6 +5,7 @@
 #ifndef INC_220GROUPPROJECT_QUESTION_H
 #define INC_220GROUPPROJECT_QUESTION_H
 #include <cstdlib>
+#include <tuple>
 #include <string>
 #include "ArraySoundMap.h"
 #include "Sound.h"

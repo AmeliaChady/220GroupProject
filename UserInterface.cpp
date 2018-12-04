@@ -18,12 +18,12 @@
 // TODO: ListOfWordsChanger save function with a filename
 
 
-void menuState(int& state, std::string& filename, bool& print, bool& preset){
+void menuState(int& state, std::string& filename, bool& printer, bool& preset){
     // Text Blurb?
-    if(print) {
+    if(printer) {
         std::cout << "--Main Menu--------" << std::endl;
 
-        print = false;
+        printer = false;
     }
     std::cout << " >";
     // Get Input
@@ -37,6 +37,7 @@ void menuState(int& state, std::string& filename, bool& print, bool& preset){
             if(splitInput->getValueAt(0) == "start"){
                 // Check start <preset or random>
                 state = 1;
+                printer = true;
             }else if(splitInput->getValueAt(0) == "load") { // TODO: Figure out a better name
                 // Check load <filename>
                 try{
@@ -49,7 +50,7 @@ void menuState(int& state, std::string& filename, bool& print, bool& preset){
             }else if(splitInput->getValueAt(0) == "edit"){
                 // Check edit
                 state = 2;
-                print = true;
+                printer = true;
             }else if(splitInput->getValueAt(0) == "help"){
                 // Check help
                 //TODO Make a better help function
@@ -68,7 +69,7 @@ void menuState(int& state, std::string& filename, bool& print, bool& preset){
             }else if(splitInput->getValueAt(0) == "quit"){
                 // Check quit
                 state = -1;
-                print = true;
+                printer = true;
             }else{
                 std::cout << "not valid command. type \"help\" for help" << std::endl;
             }
@@ -105,8 +106,10 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
             try{
                 question = quiz->presentQuestion();
                 std::cout << question << std::endl;
+                getNextQuestion = false;
             }catch(std::out_of_range ){
-                //TODO
+                state = 0;
+                printer = true;
             }
         }
 
@@ -135,6 +138,7 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
             }else if(splitInput->getValueAt(0)=="exit"){
                 // Check exit
                 state = 0;
+                printer = true;
             }else if(splitInput->getValueAt(0)=="reprint"){
                 std::cout << question << std::endl;
             }else if(splitInput->getValueAt(0)=="save"){
@@ -154,9 +158,6 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
         }
     }
 
-    //if()
-
-
     delete quiz;
 }
 
@@ -167,7 +168,7 @@ void editState(int& state, bool& printer){
         printer = false;
     }
 
-    ListOfWordsChanger* words = new ListOfWordsChanger();
+    ///ListOfWordsChanger* words = new ListOfWordsChanger();
 
     while(state == 2) {
         std::cout << " >";
@@ -183,7 +184,7 @@ void editState(int& state, bool& printer){
                     // Check save <filename>
                     try {
                         std::string filename = splitInput->getValueAt(1);
-                        words->save(filename);
+                        ///words->save(filename);
                     } catch (std::out_of_range &) {
                         std::cout << "Invalid argument" << std::endl;
                     }
@@ -191,9 +192,9 @@ void editState(int& state, bool& printer){
                     // Check load <filename>
                     try {
                         std::string filename = splitInput->getValueAt(1);
-                        ListOfWordsChanger* temp = new ListOfWordsChanger(filename);
-                        delete words;
-                        words = temp;
+                        ///ListOfWordsChanger* temp = new ListOfWordsChanger(filename);
+                        ///delete words;
+                        ///words = temp;
                     } catch (std::out_of_range &) {
                         std::cout << "Invalid argument" << std::endl;
 
@@ -203,7 +204,7 @@ void editState(int& state, bool& printer){
                     try {
                         std::string addedSpelling = splitInput->getValueAt(1);
                         std::string addedPhonetic = splitInput->getValueAt(2);
-                        words->addWord(addedSpelling, addedPhonetic);
+                        ///words->addWord(addedSpelling, addedPhonetic);
                     } catch (std::out_of_range &) {
                         std::cout << "Invalid argument(s)" << std::endl;
                     }
@@ -211,7 +212,7 @@ void editState(int& state, bool& printer){
                     // Check remove <spelling>
                     try {
                         std::string removedWord = splitInput->getValueAt(1);
-                        words->removeWord(removedWord);
+                        ///words->removeWord(removedWord);
                     } catch (std::out_of_range &) {
                         std::cout << "Invalid argument" << std::endl;
                     }
@@ -232,12 +233,12 @@ void editState(int& state, bool& printer){
         }
     }
 
-    delete words;
+    ///delete words;
 }
 
 int main(){
 
-    std::string filename = "default.txt";
+    std::string filename = "default.csv";
     int state = 0;
     bool printer = true;
     bool preset = false;
