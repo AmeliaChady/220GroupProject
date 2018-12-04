@@ -25,7 +25,7 @@ Question::Question(){
 
 //generates a new question, uses the soundMap to generate 3 random incorrect questions
 //the pair here is output from wordList originally, first string is the english word and second string is the correct phonetic translation
-Question::Question(const std::pair<std::string,std::string> word, ArraySoundMap* soundMap){
+Question::Question(const std::pair<std::string,std::string> word, SoundMap* soundMap){
     this->englishWord = std::get<0>(word);
     this->correctAnswer = std::get<1>(word);
     int length = correctAnswer.size();
@@ -88,17 +88,17 @@ std::string Question::outputQuestion(){
     else if (order == 2) {
         questionStr = this->englishWord + "\n";
         questionStr = questionStr + "1. " + this->wrongOne + "\n";
-        questionStr = questionStr + "2. " + this->correctAnswer + "\n";
-        questionStr = questionStr + "3. " + this->wrongTwo + "\n";
+        questionStr = questionStr + "2. " + this->wrongTwo + "\n";
+        questionStr = questionStr + "3. " + this->correctAnswer + "\n";
         questionStr = questionStr + "4. " + this->wrongThree + "\n";
         this->correctOption = 3;
     }
     else { //order == 3
         questionStr = this->englishWord + "\n";
         questionStr = questionStr + "1. " + this->wrongOne + "\n";
-        questionStr = questionStr + "2. " + this->correctAnswer + "\n";
-        questionStr = questionStr + "3. " + this->wrongTwo + "\n";
-        questionStr = questionStr + "4. " + this->wrongThree + "\n";
+        questionStr = questionStr + "2. " + this->wrongTwo + "\n";
+        questionStr = questionStr + "3. " + this->wrongThree + "\n";
+        questionStr = questionStr + "4. " + this->correctAnswer + "\n";
         this->correctOption = 4;
     }
     return questionStr;
@@ -115,7 +115,7 @@ std::string Question::getAnswerString(int userAnswer){
         answerString = "Correct.";
     }
     else{ //answer is wrong
-        answerString = "Incorrect: Correct answer is - " + this->correctAnswer;
+        answerString = "Incorrect: Correct answer is - " + this->correctAnswer + ".";
     }
     return answerString;
 } //returns either correct, or incorrect- answer is " "

@@ -15,13 +15,15 @@ ListOfWords::ListOfWords(){
 }
 ListOfWords::ListOfWords(std::string fileNameIn){
     std::fstream listInput(fileNameIn);
-    this->wordBank = new ArrayList<std::pair<std::string, std::string>>();
-    std::string inputStr;
+    this->wordBank = new ArrayList<std::pair<std::string, std::string>>(2);
     std::pair<std::string, std::string> inputPair;
-    while (listInput){
-        std::cout<<"file is good"<<std::endl;
-        std::string inputStr;
-        getline(listInput, inputStr);
+    std::string inputStr;
+    if (!listInput){
+        std::cout<<"File is not in directory"<<std::endl;
+        exit(1);
+    }
+
+    while (getline(listInput, inputStr)){
         List<std::string>* englishAndPhonetic = split(inputStr, ",");
         inputPair = {englishAndPhonetic->getValueAt(0), englishAndPhonetic->getValueAt(1)};
         this->wordBank->insertAtEnd(inputPair);
@@ -33,12 +35,10 @@ ListOfWords::ListOfWords(std::string fileNameIn){
 
 } //generates a list from the fileName
 std::pair<std::string, std::string> ListOfWords::giveRandWord(){
-    std::cout<< "giveRandWord call worked" <<std::endl;
     int sizeOfList = wordBank->itemCount();
     int index = rand() % sizeOfList;
     std::pair<std::string, std::string> returnedPair;
     returnedPair = wordBank->getValueAt(index);
-    std::cout<< "giveRandWord completed" <<std::endl;
     return returnedPair;
 } //outputs a random word in the wordBank
 

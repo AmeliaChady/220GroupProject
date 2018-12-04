@@ -18,9 +18,20 @@ void QuestionTest(){
 
 }
 
+void QuestionSoundMapTest(){
+    std::cout<<"QuestionSoundMapTest beginning"<<std::endl;
+    SoundMap* testMap = new ArraySoundMap("defaultSounds.txt");
+    testMap->read();
+    const std::pair<std::string,std::string> testPair = {"beet", "bit"};
+    Question* testQuestion = new Question(testPair, testMap);
+    std::string toPrint = testQuestion->outputQuestion();
+    std::cout<<toPrint<<std::endl;
+    std::string secondString = testQuestion->getAnswerString(2);
+    std::cout<<secondString<<std::endl;
+}
+
 void ListOfWordsTest(){
     ListOfWords* testList = new ListOfWords("listOfWordsTest.csv");
-    std::cout<<"List loading worked"<<std::endl;
     int i = 0;
     for (i = 0; i < 10; ++i){
         std::pair<std::string, std::string> testPair = testList->giveRandWord();
@@ -31,9 +42,16 @@ void ListOfWordsTest(){
     }
 }
 
+void QuestionSoundMapMacro(){
+    for (int i = 0; i < 10; ++i){
+        QuestionSoundMapTest();
+    }
+}
+
 int main(){
     QuestionTest();
     ListOfWordsTest();
+    QuestionSoundMapMacro();
     return 0;
 }
 
