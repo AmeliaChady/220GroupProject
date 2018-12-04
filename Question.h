@@ -23,7 +23,7 @@ public:
     Question(std::pair<std::string,std::string> word, std::string wrongOneIn, std::string wrongTwoIn, std::string wrongThreeIn); //you shouldn't
     //ever have to use this, its for testing
 
-    Question(const std::pair<std::string,std::string> word, ArraySoundMap* soundMap); //generates a new question, uses the soundMap to generate 3 random incorrect questions
+    Question(const std::pair<std::string,std::string> word, SoundMap* soundMap); //generates a new question, uses the soundMap to generate 3 random incorrect questions
     //the pair here is output from wordList originally, first string is the english word and second string is the correct phonetic translation
     std::string outputQuestion(); //outputs the question in a printout type of format, not sure if we need this functionality
     //but should be easy enough to do, basically a toString
