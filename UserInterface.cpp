@@ -184,7 +184,7 @@ void editState(int& state, bool& printer){
                     try {
                         std::string addedSpelling = splitInput->getValueAt(1);
                         std::string addedPhonetic = splitInput->getValueAt(2);
-                        words->addWord()
+                        words->addWord(addedSpelling, addedPhonetic);
                     } catch (std::out_of_range &) {
                         std::cout << "Invalid argument(s)" << std::endl;
                     }
@@ -192,7 +192,7 @@ void editState(int& state, bool& printer){
                     // Check remove <spelling>
                     try {
                         std::string removedWord = splitInput->getValueAt(1);
-                        // TODO: Add connection
+                        words->removeWord(removedWord);
                     } catch (std::out_of_range &) {
                         std::cout << "Invalid argument" << std::endl;
                     }
@@ -212,6 +212,8 @@ void editState(int& state, bool& printer){
 
         }
     }
+
+    delete words;
 }
 
 int main(){
