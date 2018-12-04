@@ -9,15 +9,18 @@
 #include "Question.h"
 #include "ListOfWords.h"
 #include "ArraySoundMap.h"
+#include <fstream>
 
 class Quiz {
 protected:
+    std::string file;
     int score;
     int answQuestions;
     int quizCap;
     SoundMap* workingMap;
     Question* currQuestion;
     ListOfWords* quizBank;
+    std::ofstream outf;
 private:
     /*
      * asks for Question object to be made
@@ -40,7 +43,7 @@ public:
      */
     virtual std::string checkAnswer(int answerChoice)=0;
 
-    virtual void saveQuiz(std::string fileName)=0;
+    virtual void saveQuiz()=0;
 
     virtual std::string getScore()=0;
 
