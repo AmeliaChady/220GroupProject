@@ -6,9 +6,11 @@
 #include <fstream>
 #include <iostream>
 
-//private
-void RandomQuiz::makeQuestion(std::string word) {
 
+//private
+std::string RandomQuiz::makeQuestion(const std::pair<std::string, std::string> pairIn) {
+    Question* currQuestion = new Question(pairIn, workingMap);
+    return currQuestion->outputQuestion();
 }
 
 std::string RandomQuiz::getAndWriteAnswer() {
@@ -17,11 +19,30 @@ std::string RandomQuiz::getAndWriteAnswer() {
 
 //public
 RandomQuiz::RandomQuiz(std::string fileName, int numQuestions) {
+    std::ofstream outf(fileName);
+    this->quizBank = new ListOfWords(fileName);
+    this->quizCap = numQuestions;
+    this->workingMap = new ArraySoundMap();
 
-    std::string timeDate = std::to_string(std::chrono::system_clock::now());
-    std::ofstream outf("Random Quiz " + timeDate + ".txt");
+}
 
+std::string RandomQuiz::presentQuestion(){
+    if (answQuestions < quizCap){
+        std::pair<std::string, std::string> holdForQuestion = quizBank->giveRandWord();
+        std::string holdForUI = makeQuestion(holdForQuestion);
+        //write to file
+        answQuestions++;
+        return holdForUI;
+    } else {
+        throw std::out_of_range("No more questions.");
+    }
 
+}
 
+std::string RandomQuiz::checkAnswer(int answerChoice) {
+
+}
+
+void RandomQuiz::saveQuiz(std::string fileName){
 
 }

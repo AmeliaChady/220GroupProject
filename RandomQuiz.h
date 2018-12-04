@@ -10,7 +10,8 @@
 
 class RandomQuiz : public Quiz {
 private:
-    void makeQuestion(std::string word);
+    ListOfWords* quizBank;
+    std::string makeQuestion(const std::pair<std::string, std::string>);
 public:
     RandomQuiz(std::string fileName, int numQuestions);
 
