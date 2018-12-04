@@ -6,6 +6,7 @@
 #include "Quiz.h"
 #include "RandomQuiz.h"
 #include "PresetQuiz.h"
+#include "ListOfWordsChanger.h"
 #include <iostream>
 
 
@@ -89,7 +90,11 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
     std::string question = "";
     while(state==1){
         if(getNextQuestion){
-            //question =
+            try{
+                question = quiz->presentQuestion();
+            }catch(std::out_of_range ){
+                //TODO
+            }
         }
         // TODO: Get question and print     quiz->getNextQuestion()? In a try-catch?
         std::cout << " >";
@@ -143,7 +148,7 @@ void editState(int& state, bool& printer){
         printer = false;
     }
 
-    // TODO: Add Connections
+    ListOfWordsChanger* words = new ListOfWordsChanger();
 
     while(state == 2) {
         std::cout << " >";
@@ -159,7 +164,7 @@ void editState(int& state, bool& printer){
                     // Check save <filename>
                     try {
                         std::string filename = splitInput->getValueAt(1);
-                        // TODO: Add connection
+                        words->save(filename);
                     } catch (std::out_of_range &) {
                         std::cout << "Invalid argument" << std::endl;
                     }
@@ -167,7 +172,9 @@ void editState(int& state, bool& printer){
                     // Check load <filename>
                     try {
                         std::string filename = splitInput->getValueAt(1);
-                        // TODO: Add connection
+                        ListOfWordsChanger* temp = new ListOfWordsChanger(filename);
+                        delete words;
+                        words = temp;
                     } catch (std::out_of_range &) {
                         std::cout << "Invalid argument" << std::endl;
 
@@ -177,7 +184,7 @@ void editState(int& state, bool& printer){
                     try {
                         std::string addedSpelling = splitInput->getValueAt(1);
                         std::string addedPhonetic = splitInput->getValueAt(2);
-                        // TODO: Add connection
+                        words->addWord()
                     } catch (std::out_of_range &) {
                         std::cout << "Invalid argument(s)" << std::endl;
                     }

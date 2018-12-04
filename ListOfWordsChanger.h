@@ -18,6 +18,8 @@ public:
     void addWord(std::string word, std::string phoneticSpelling);
     //removes from file
     void removeWord(std::string word);
+
+    void save(std::string filename);
 };
 
 
