@@ -13,12 +13,11 @@ class RandomQuiz : public Quiz {
 private:
 
     std::string makeQuestion(const std::pair<std::string, std::string>);
-    std::ofstream outf;
 public:
     RandomQuiz(std::string fileName, int numQuestions);
     std::string presentQuestion();
     std::string checkAnswer(int answerChoice);
-    void saveQuiz(std::string fileName);
+    void saveQuiz();
     std::string getScore();
 
 };

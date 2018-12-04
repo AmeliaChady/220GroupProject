@@ -15,7 +15,7 @@ public:
     PresetQuiz(std::string fileName);
     std::string presentQuestion();
     std::string checkAnswer(int answerChoice);
-    void saveQuiz(std::string fileName);
+    void saveQuiz();
     std::string getScore();
 };
 
