@@ -154,7 +154,7 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
         }
     }
 
-    if()
+    //if()
 
 
     delete quiz;
