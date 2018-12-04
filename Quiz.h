@@ -35,7 +35,7 @@ public:
      * throws std::out_of_range error if questionCounter is greater than or equal to number of questions in quiz
      *
      */
-    virtual std::string presentQuestion(std::string word)=0;
+    virtual std::string presentQuestion()=0;
 
     /*
      * given answer choice (1,2,3,4), passes

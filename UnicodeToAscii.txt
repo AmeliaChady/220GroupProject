@@ -5,7 +5,7 @@
  b -> b   |  θ -> T   |  z -> z   |  ʃ -> S   |  g -> g
  m -> m   |  ð -> D   |  n -> n   |  ʒ -> Z   |  ŋ -> N
  w -> .w  |  t -> t   |  l -> l   |  r -> R   |  h -> h
- f -> f   |  d -> d   |  ʧ -> .S  |  j -> j   |
+ f -> f   |  d -> d   |  ʧ -> .S  |  j ->    |
 
 // Vowels
  i -> i   |  ɛ -> E   |  u -> u   |  ʌ -> ^   |  oɪ -> oI
