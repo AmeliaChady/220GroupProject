@@ -52,8 +52,19 @@ void menuState(int& state, std::string& filename, bool& print, bool& preset){
                 print = true;
             }else if(splitInput->getValueAt(0) == "help"){
                 // Check help
-                //TODO
-                std::cout << "todo" << std::endl;
+                //TODO Make a better help function
+                std::cout << "Main Menu Help:\n"
+                             "start <preset/random> <integer> -> starts the quiz, allowing a user to\n"
+                             "  pick the style of quiz, and for random quizzes, the number of questions.\n"
+                             "  default is equivalent to \"start random 10\" "
+                             "\n"
+                             "load <filename> -> sets the filename for quiz to <filename>"
+                             "\n"
+                             "edit -> Sends you to the editor mode"
+                             "\n"
+                             "help -> prints this message"
+                             "\n"
+                             "quit -> exits out of the program"<< std::endl;
             }else if(splitInput->getValueAt(0) == "quit"){
                 // Check quit
                 state = -1;
