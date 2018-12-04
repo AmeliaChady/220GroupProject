@@ -13,6 +13,7 @@ private:
     std::string fileName; //name of the csv file that the list comes from
 public:
     ListOfWords();
+    ~ListOfWords();
     ListOfWords(std::string fileNameIn); //generates a list from the fileName
     std::pair<std::string, std::string> giveRandWord(); //outputs a random word in the wordBank
     std::pair<std::string, std::string> giveWordAtIndex(int index);
