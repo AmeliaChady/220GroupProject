@@ -11,7 +11,7 @@
 
 class RandomQuiz : public Quiz {
 private:
-    ListOfWords* quizBank;
+
     std::string makeQuestion(const std::pair<std::string, std::string>);
     std::ofstream outf;
 public:

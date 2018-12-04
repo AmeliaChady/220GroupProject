@@ -12,8 +12,8 @@ std::string PresetQuiz::makeQuestion(const std::pair<std::string, std::string> p
 }
 
 //public
-PresetQuiz(std::string fileName){
-
+PresetQuiz::PresetQuiz(std::string fileName){
+    this->quizBank = new ListOfWords(fileName);
 }
 
 std::string PresetQuiz::presentQuestion(){

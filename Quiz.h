@@ -17,6 +17,7 @@ protected:
     int quizCap;
     SoundMap* workingMap;
     Question* currQuestion;
+    ListOfWords* quizBank;
 private:
     /*
      * asks for Question object to be made
