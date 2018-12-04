@@ -22,12 +22,12 @@ void QuestionSoundMapTest(){
     std::cout<<"QuestionSoundMapTest beginning"<<std::endl;
     SoundMap* testMap = new ArraySoundMap("defaultSounds.txt");
     testMap->read();
-    std::cout<<"SoundMap construction worked"<<std::endl;
     const std::pair<std::string,std::string> testPair = {"beet", "bit"};
-    std::cout<<"pair construction worked"<<std::endl;
     Question* testQuestion = new Question(testPair, testMap);
-    std::cout<<"Question construction worked"<<std::endl;
     std::string toPrint = testQuestion->outputQuestion();
+    std::cout<<toPrint<<std::endl;
+    std::string secondString = testQuestion->getAnswerString(2);
+    std::cout<<secondString<<std::endl;
 }
 
 void ListOfWordsTest(){
@@ -42,9 +42,16 @@ void ListOfWordsTest(){
     }
 }
 
+void QuestionSoundMapMacro(){
+    for (int i = 0; i < 10; ++i){
+        QuestionSoundMapTest();
+    }
+}
+
 int main(){
     QuestionTest();
     ListOfWordsTest();
+    QuestionSoundMapMacro();
     return 0;
 }
 

@@ -28,19 +28,14 @@ Question::Question(){
 Question::Question(const std::pair<std::string,std::string> word, SoundMap* soundMap){
     this->englishWord = std::get<0>(word);
     this->correctAnswer = std::get<1>(word);
-    std::cout<<"setting englishWord and correctAnswer worked"<<std::endl;
     int length = correctAnswer.size();
     int index = rand() % length;
     char character = correctAnswer[index];
-    std::cout<<"selecting a character worked"<<std::endl;
     std::string charAsString(1, character);
-    std::cout<<"String is set properly"<<std::endl;
     Sound* toUse = soundMap->getKey(charAsString);
-    std::cout<<"Getting key worked"<<std::endl;
     std::string toInsert = toUse->getSimilarSymbol();
     char toInsertChar = toInsert[0];
     this->wrongOne = this->stringEdit(correctAnswer, index, toInsertChar);
-    std::cout<<"first wrong answer worked"<<std::endl;
     index = rand() % length;
     character = correctAnswer[index];
     std::string charAsString2(1, character);
@@ -93,17 +88,17 @@ std::string Question::outputQuestion(){
     else if (order == 2) {
         questionStr = this->englishWord + "\n";
         questionStr = questionStr + "1. " + this->wrongOne + "\n";
-        questionStr = questionStr + "2. " + this->correctAnswer + "\n";
-        questionStr = questionStr + "3. " + this->wrongTwo + "\n";
+        questionStr = questionStr + "2. " + this->wrongTwo + "\n";
+        questionStr = questionStr + "3. " + this->correctAnswer + "\n";
         questionStr = questionStr + "4. " + this->wrongThree + "\n";
         this->correctOption = 3;
     }
     else { //order == 3
         questionStr = this->englishWord + "\n";
         questionStr = questionStr + "1. " + this->wrongOne + "\n";
-        questionStr = questionStr + "2. " + this->correctAnswer + "\n";
-        questionStr = questionStr + "3. " + this->wrongTwo + "\n";
-        questionStr = questionStr + "4. " + this->wrongThree + "\n";
+        questionStr = questionStr + "2. " + this->wrongTwo + "\n";
+        questionStr = questionStr + "3. " + this->wrongThree + "\n";
+        questionStr = questionStr + "4. " + this->correctAnswer + "\n";
         this->correctOption = 4;
     }
     return questionStr;
