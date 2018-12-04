@@ -17,7 +17,7 @@ ArraySoundMap::ArraySoundMap(std::string fileName) {
 }
 
 ArraySoundMap::~ArraySoundMap() {
-
+    delete soundArray;
 }
 
 void ArraySoundMap::read() {

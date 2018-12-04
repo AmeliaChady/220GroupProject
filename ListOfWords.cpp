@@ -13,6 +13,11 @@ ListOfWords::ListOfWords(){
     wordBank = nullptr;
     fileName = "";
 }
+ListOfWords::~ListOfWords() {
+    delete wordBank;
+    wordBank = nullptr;
+}
+
 ListOfWords::ListOfWords(std::string fileNameIn){
     std::fstream listInput(fileNameIn);
     this->wordBank = new ArrayList<std::pair<std::string, std::string>>(2);
