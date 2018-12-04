@@ -80,23 +80,25 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
     Quiz* quiz;
     if(preset){
         // Preset Quiz needs a file name in the constructor
-        //quiz = new PresetQuiz(filename);
+        quiz = new PresetQuiz(filename);
     }else{
         // Random Quiz also needs a file name in the constructor
-        //quiz = new RandomQuiz(filename, 10);
+        quiz = new RandomQuiz(filename, 10);
     }
 
+    bool quizFinished = false;
     bool getNextQuestion = true;
     std::string question = "";
     while(state==1){
         if(getNextQuestion){
             try{
                 question = quiz->presentQuestion();
+                std::cout << question << std::endl;
             }catch(std::out_of_range ){
                 //TODO
             }
         }
-        // TODO: Get question and print     quiz->getNextQuestion()? In a try-catch?
+
         std::cout << " >";
         // Get Input
         std::string userInput;
@@ -105,31 +107,34 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
             List<std::string> *splitInput = split(userInput, " ");
             // Possible functions
             if(splitInput->getValueAt(0)=="1"){
-                //TODO
+                std::cout << quiz->checkAnswer(1) << std::endl;
                 getNextQuestion = true;
             }else if(splitInput->getValueAt(0)=="2"){
-                //TODO
+                std::cout << quiz->checkAnswer(2) << std::endl;
                 getNextQuestion = true;
             }else if(splitInput->getValueAt(0)=="3"){
-                //TODO
+                std::cout << quiz->checkAnswer(3) << std::endl;
                 getNextQuestion = true;
             }else if(splitInput->getValueAt(0)=="4"){
-                //TODO
+                std::cout << quiz->checkAnswer(4) << std::endl;
                 getNextQuestion = true;
             }else if(splitInput->getValueAt(0)=="help"){
                 //TODO
                 std::cout << "todo" << std::endl;
-            }else if(splitInput->getValueAt(0)=="save"){
-                // Check save <filename>
-                try{
-                    std::string saveFilename = splitInput->getValueAt(1);
-                    //TODO something with quizzes
-                }catch(std::out_of_range&){
-                    std::cout << "Filename needed!" << std::endl;
-                }
             }else if(splitInput->getValueAt(0)=="exit"){
                 // Check exit
                 state = 0;
+            }else if(splitInput->getValueAt(0)=="reprint"){
+                std::cout << question << std::endl;
+            }else if(splitInput->getValueAt(0)=="save"){
+                // Check save <filename>
+                // TODO: Move Save
+                try{
+                    std::string saveFilename = splitInput->getValueAt(1);
+
+                }catch(std::out_of_range&){
+                    std::cout << "Filename needed!" << std::endl;
+                }
             }else{
                 std::cout << "not valid command. type \"help\" for help" << std::endl;
             }
@@ -137,6 +142,9 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
 
         }
     }
+
+    if()
+
 
     delete quiz;
 }
@@ -218,7 +226,7 @@ void editState(int& state, bool& printer){
 
 int main(){
 
-    std::string filename = "default";
+    std::string filename = "default.txt";
     int state = 0;
     bool printer = true;
     bool preset = false;

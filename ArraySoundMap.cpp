@@ -45,6 +45,7 @@ void ArraySoundMap::read() {
     getline(file, currentLine);
     while(currentLine.substr(0, 1) != "#"){
         if (currentLine.substr(0, 2) != "//" && currentLine.substr(0, 2) != "\r") {
+            currentLine = trim(currentLine);
             List<std::string>* splitted = split(currentLine, " ");
             Sound* tempBase = getKey(splitted->getValueAt(0));
             for(int i = 1; i < splitted->itemCount(); i++) {
@@ -63,10 +64,11 @@ std::string ArraySoundMap::getFileName() {
 
 Sound* ArraySoundMap::getKey(std::string key) {
     key = trim(key);
+    Sound* temp = nullptr;
     for(int i = 0; i < soundArray->itemCount(); i++){
         Sound* temp = soundArray->getValueAt(i);
         //std::cout << temp->getSymbol() << std::endl;
-        if(temp->getSymbol().substr(0,1)==key){
+        if(temp->getSymbol()==key){
             return temp;
         }
     }
