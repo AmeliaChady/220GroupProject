@@ -42,4 +42,10 @@ std::pair<std::string, std::string> ListOfWords::giveRandWord(){
     return returnedPair;
 } //outputs a random word in the wordBank
 
+std::pair<std::string, std::string> ListOfWords::giveWordAtIndex(int index) {
+    std::pair<std::string, std::string> returnedPair;
+    returnedPair = wordBank->getValueAt(index);
+    return returnedPair;
+}
+
 

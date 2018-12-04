@@ -16,17 +16,14 @@ protected:
     int answQuestions;
     int quizCap;
     SoundMap* workingMap;
+    Question* currQuestion;
+    ListOfWords* quizBank;
 private:
     /*
      * asks for Question object to be made
      * @returns Question object temp void
      */
-    virtual std::string makeQuestion(std::string word)=0;
-
-    /*
-     * retrieves answer from Question, writes to a file, send to UI
-     */
-    virtual std::string getAndWriteAnswer()=0;
+    virtual std::string makeQuestion(const std::pair<std::string, std::string> pairIn)=0;
 
     //writes to file to store past tests
 
