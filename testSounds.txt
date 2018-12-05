@@ -1,0 +1,13 @@
+// Made By Amelia
+// This number is the amount of sounds
+
+40
+// These are the sounds, separated by newlines until # shows up
+// c++ is kinda weird as hell with trimming things so no spaces in here!
+A
+B
+#
+// These are the connections between sounds
+// Continues until the # shows up
+A B
+#
