@@ -11,7 +11,8 @@
 
 class RandomQuiz : public Quiz {
 private:
-
+    RandomQuiz(const RandomQuiz& quizToCopy);
+    RandomQuiz& operator=(const RandomQuiz& quizToCopy);
     std::string makeQuestion(const std::pair<std::string, std::string>);
 public:
     RandomQuiz(std::string fileName, int numQuestions);

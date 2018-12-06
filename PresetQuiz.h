@@ -10,6 +10,8 @@
 
 class PresetQuiz: public Quiz {
 private:
+    PresetQuiz(const PresetQuiz& presetQuizToCopy);
+    PresetQuiz& operator=(const PresetQuiz& presetQuizToCopy);
     std::string makeQuestion(const std::pair<std::string, std::string> pairIn);
 public:
     PresetQuiz(std::string fileName);

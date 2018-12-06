@@ -7,8 +7,13 @@
 
 
 #include <string>
+#include <fstream>
 
 class ListOfWordsChanger {
+private:
+    std::ofstream outFile;
+    std::ifstream inFile;
+    std::string file;
 public:
     //default constructor
     ListOfWordsChanger();

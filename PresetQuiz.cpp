@@ -12,6 +12,7 @@ std::string PresetQuiz::makeQuestion(const std::pair<std::string, std::string> p
     return currQuestion->outputQuestion();
 }
 
+//TODO add sound map param
 //public
 PresetQuiz::PresetQuiz(std::string fileName){
     this->file = fileName;
@@ -22,6 +23,7 @@ PresetQuiz::PresetQuiz(std::string fileName){
     this->workingMap = new ArraySoundMap();
     this->currQuestion = nullptr;
 }
+//TODO add destructor
 
 std::string PresetQuiz::presentQuestion(){
     if (answQuestions < quizCap){

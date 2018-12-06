@@ -14,6 +14,7 @@ std::string RandomQuiz::makeQuestion(const std::pair<std::string, std::string> p
     return currQuestion->outputQuestion();
 }
 
+//TODO add sound map param
 //public
 RandomQuiz::RandomQuiz(std::string fileName, int numQuestions) {
     this->file = fileName;
@@ -26,10 +27,13 @@ RandomQuiz::RandomQuiz(std::string fileName, int numQuestions) {
     this->quizBank = new ListOfWords(fileName);
 }
 
+//TODO add destructor
+
 std::string RandomQuiz::presentQuestion(){
     if (answQuestions < quizCap){
         std::pair<std::string, std::string> holdForQuestion = quizBank->giveRandWord();
         std::string holdForUI = makeQuestion(holdForQuestion);
+        outf.open(file, std::ios::app);
         outf << holdForUI << std::endl;
         answQuestions++;
         return holdForUI;
