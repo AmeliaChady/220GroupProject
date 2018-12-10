@@ -13,7 +13,7 @@
 
 class Quiz {
 protected:
-    std::string file;
+    std::string writefile;
     int score;
     int answQuestions;
     int quizCap;

@@ -14,20 +14,27 @@ std::string RandomQuiz::makeQuestion(const std::pair<std::string, std::string> p
     return currQuestion->outputQuestion();
 }
 
-//TODO add sound map param
 //public
-RandomQuiz::RandomQuiz(std::string fileName, int numQuestions) {
-    this->file = fileName;
+RandomQuiz::RandomQuiz(ArraySoundMap* soundMap, std::string readFileName, int numQuestions) {
+    this->writefile = "RandomQuiz" + ;
     this->score = 0;
     this->answQuestions = 0;
     this->quizCap = numQuestions;
-    this->workingMap = new ArraySoundMap();
+    this->workingMap = soundMap;
     workingMap->read();
     this->currQuestion = nullptr;
-    this->quizBank = new ListOfWords(fileName);
+    this->quizBank = new ListOfWords(readFileName);
 }
 
-//TODO add destructor
+RandomQuiz::~RandomQuiz() {
+    delete currQuestion;
+    currQuestion = nullptr;
+
+    workingMap = nullptr;
+
+    delete quizBank;
+    quizBank = nullptr;
+}
 
 std::string RandomQuiz::presentQuestion(){
     if (answQuestions < quizCap){

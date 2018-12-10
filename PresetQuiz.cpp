@@ -14,16 +14,25 @@ std::string PresetQuiz::makeQuestion(const std::pair<std::string, std::string> p
 
 //TODO add sound map param
 //public
-PresetQuiz::PresetQuiz(std::string fileName){
+PresetQuiz::PresetQuiz(ArraySoundMap* soundMap, std::string fileName){
     this->file = fileName;
     this->quizBank = new ListOfWords(fileName);
     this->quizCap = 10;
     this->score = 0;
     this->answQuestions = 0;
-    this->workingMap = new ArraySoundMap();
+    this->workingMap = soundMap;
     this->currQuestion = nullptr;
 }
 //TODO add destructor
+PresetQuiz::~PresetQuiz() {
+    delete quizBank;
+    quizBank = nullptr;
+
+    workingMap = nullptr;
+
+    delete currQuestion;
+    currQuestion = nullptr;
+}
 
 std::string PresetQuiz::presentQuestion(){
     if (answQuestions < quizCap){
