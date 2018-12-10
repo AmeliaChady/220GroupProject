@@ -7,11 +7,12 @@
 #include "Util.h"
 
 
-std::string Question::stringEdit(std::string toEdit, int index, char toInsert){
-    std::string newString = toEdit;
-    newString[index] = toInsert;
-    return newString;
-
+bool replace(std::string& str, const std::string& from, const std::string& to) {
+    size_t start_pos = str.find(from);
+    if(start_pos == std::string::npos)
+        return false;
+    str.replace(start_pos, from.length(), to);
+    return true;
 }
 
 Question::Question(){
@@ -32,27 +33,51 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     int index = rand() % length;
     char character = correctAnswer[index];
     std::string charAsString(1, character);
+    if (character == '.'){
+        char otherChar = correctAnswer[index + 1];
+        charAsString = character + otherChar;
+    }
+    else if (index > 0 && correctAnswer[index - 1 ] == '.'){
+        char otherChar = '.';
+        charAsString = otherChar + character;
+    }
     Sound* toUse = soundMap->getKey(charAsString);
     std::string toInsert = toUse->getSimilarSymbol();
-    char toInsertChar = toInsert[0];
-    this->wrongOne = this->stringEdit(correctAnswer, index, toInsertChar);
+    std::string correctCopy = correctAnswer;
+    replace(correctCopy, charAsString, toInsert);
+    this->wrongOne = correctCopy;
     index = rand() % length;
     character = correctAnswer[index];
     std::string charAsString2(1, character);
-    toUse = soundMap->getKey(charAsString);
+    if (character == '.'){
+        char otherChar = correctAnswer[index + 1];
+        charAsString2 = character + otherChar;
+    }
+    else if (index > 0 && correctAnswer[index - 1 ] == '.'){
+        char otherChar = '.';
+        charAsString2 = otherChar + character;
+    }
+    toUse = soundMap->getKey(charAsString2);
     toInsert = toUse->getSimilarSymbol();
-    toInsertChar = toInsert[0];
-    this->wrongTwo = this->stringEdit(correctAnswer, index, toInsertChar);
+    correctCopy = correctAnswer;
+    replace(correctCopy, charAsString2, toInsert);
+    this->wrongTwo = correctCopy;
     index = rand() % length;
     character = correctAnswer[index];
     std::string charAsString3(1, character);
-    toUse = soundMap->getKey(charAsString);
+    if (character == '.'){
+        char otherChar = correctAnswer[index + 1];
+        charAsString3 = character + otherChar;
+    }
+    else if (index > 0 && correctAnswer[index - 1 ] == '.'){
+        char otherChar = '.';
+        charAsString3 = otherChar + character;
+    }
+    toUse = soundMap->getKey(charAsString2);
     toInsert = toUse->getSimilarSymbol();
-    toInsertChar = toInsert[0];
-    this->wrongThree = this->stringEdit(correctAnswer, index, toInsertChar);
-    correctOption = 1;
-
-
+    correctCopy = correctAnswer;
+    replace(correctCopy, charAsString3, toInsert);
+    this->wrongThree = correctCopy;
 
 }
 Question::Question(std::pair<std::string, std::string> word, std::string wrongOneIn, std::string wrongTwoIn, std::string wrongThreeIn){
