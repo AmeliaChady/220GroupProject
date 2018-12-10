@@ -3,12 +3,12 @@
 //
 
 #include "Sound.h"
+#include "ArrayList.h"
 #include "LinkedList.h"
 
 
 Sound::Sound(std::string symbol) {
     this->symbol = symbol;
-    //TODO: Change to ArrayList
     connectedSounds = new LinkedList<Sound*>();
     locked = false;
 }

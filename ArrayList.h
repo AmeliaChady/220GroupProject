@@ -6,9 +6,10 @@
 #define LAB9MAPIMPLEMENTATION_ARRAYLIST_H
 #include <stdexcept>
 #include <string>
+#include "List.h"
 
 template <class T>
-class ArrayList {
+class ArrayList : public List<T>{
 private:
     //pointer to the start of the array
     T* array;

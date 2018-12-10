@@ -31,8 +31,7 @@ void ArraySoundMap::read() {
     while(currentLine.substr(0, 2) == "//" || currentLine.substr(0, 2) == "\r" ){
         std::getline(file, currentLine);
     }
-    //TODO: Change to Array List
-    soundArray = new LinkedList<Sound*>(); // Make sure to add the currentLine size
+    soundArray = new ArrayList<Sound*>(std::stoi(currentLine)); // Make sure to add the currentLine size
 
     getline(file,currentLine);
     while(currentLine.substr(0, 1) != "#") {

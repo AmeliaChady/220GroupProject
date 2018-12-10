@@ -110,7 +110,7 @@ T ArrayList<T>::getValueAt(int index){
 
 template <class T>
 std::string ArrayList<T>::toString(){
-    if (currItemCount < 1){
+    /*if (currItemCount < 1){
         return "{}";
 
     }
@@ -121,7 +121,7 @@ std::string ArrayList<T>::toString(){
     }
     completedString = completedString + std::to_string(array[currItemCount - 1]);
     completedString = completedString + "}";
-    return completedString;
+    return completedString;*/
 }
 
 /**
