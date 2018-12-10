@@ -17,7 +17,6 @@ private:
     std::string wrongOne;
     std::string wrongTwo;
     std::string wrongThree;
-    std::string stringEdit(std::string toEdit, int index, char toInsert);
     int correctOption;
 public:
     Question(); //default constructor so arrays can be made

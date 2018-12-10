@@ -9,11 +9,6 @@
 #include "ListOfWordsChanger.h"
 #include <iostream>
 
-
-// Tim's TODO:
-// TODO: A way to save quizzes, with an inputted filename
-// TODO: Quiz construction with me passing in the SoundMap pointer
-
 void menuState(int& state, std::string& filename, bool& printer, bool& preset){
     // Text Blurb?
     if(printer) {
@@ -77,7 +72,7 @@ void menuState(int& state, std::string& filename, bool& printer, bool& preset){
 
 }
 
-void quizState(int& state, std::string& filename, bool& printer, bool& preset){
+void quizState(int& state, std::string& filename, bool& printer, bool& preset, SoundMap* soundMap){
     // Text Blurb?
     if(printer){
         std::cout << "--Quiz--------" << std::endl;
@@ -87,10 +82,10 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
     Quiz* quiz;
     if(preset){
         // Preset Quiz needs a file name in the constructor
-        quiz = new PresetQuiz(filename);
+        quiz = new PresetQuiz(soundMap, filename);
     }else{
         // Random Quiz also needs a file name in the constructor
-        quiz = new RandomQuiz(filename, 10);
+        quiz = new RandomQuiz(soundMap, filename, 10);
     }
 
     bool quizFinished = false;
@@ -105,6 +100,7 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
             }catch(std::out_of_range ){
                 state = 0;
                 printer = true;
+                quizFinished = true;
             }
         }
 
@@ -128,8 +124,14 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
                 std::cout << quiz->checkAnswer(4) << std::endl;
                 getNextQuestion = true;
             }else if(splitInput->getValueAt(0)=="help"){
-                //TODO: Make a help function
-                std::cout << "todo" << std::endl;
+                std::cout << "Quiz Help:"
+                             "<1-4> -> Answers the current question as that answer"
+                             "\n"
+                             "help -> displays this message"
+                             "\n"
+                             "exit -> goes back to the main menu, not saving the quiz or current progress"
+                             "\n"
+                             "reprint -> reprints the current question"<< std::endl;
             }else if(splitInput->getValueAt(0)=="exit"){
                 // Check exit
                 state = 0;
@@ -144,23 +146,15 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset){
         }
     }
 
-    std::string userInput = "";
-    while(userInput!="y" && userInput!="n"){
-        std::cout << "Save? \n >";
-        std::getline(std::cin, userInput);
-    }
-    if(userInput=="y"){
-        bool saved = false;
-        while(!saved){
-            std::cout << "Enter filename\n >";
+    if(quizFinished) {
+        std::string userInput = "";
+        while (userInput != "y" && userInput != "n") {
+            std::cout << "Save? \n >";
             std::getline(std::cin, userInput);
-            try{
-                List<std::string> *splitInput = split(userInput, " ");
-                std::string saveFilename = splitInput->getValueAt(0);
-                quiz->saveQuiz(); // TODO: Hey Tim, need to be able to input a filename
-            }catch(std::out_of_range&){
-                std::cout << "Invalid filename!" << std::endl;
-            }
+        }
+        if (userInput == "y") {
+            quiz->saveQuiz();
+            std::cout << "quiz saved\n";
         }
     }
 
@@ -224,8 +218,18 @@ void editState(int& state, bool& printer){
                     }
                 } else if (splitInput->getValueAt(0) == "help") {
                     // Check help
-                    // TODO
-                    std::cout << "todo" << std::endl;
+                    std::cout << "Editor Help"
+                                 "save <filename> -> saves the word list as filename"
+                                 "\n"
+                                 "load <filename> -> loads the word list at that filename if it exists"
+                                 "\n"
+                                 "add <spelling> <phonetic> -> adds a new word with the spelling and phonetic descriptions to the list"
+                                 "\n"
+                                 "remove <spelling> -> removes a word by is spelling definition"
+                                 "\n"
+                                 "help -> shows this message"
+                                 "\n"
+                                 "exit -> goes to the main menu without saving" << std::endl;
                 } else if (splitInput->getValueAt(0) == "exit") {
                     // Check exit
                     printer = true;
@@ -243,7 +247,7 @@ void editState(int& state, bool& printer){
 }
 
 int main(){
-
+    SoundMap* soundMap = new ArraySoundMap();
     std::string filename = "default.csv";
     int state = 0;
     bool printer = true;
@@ -253,11 +257,13 @@ int main(){
         if(state==0){
             menuState(state, filename, printer, preset);
         }else if(state==1){
-            quizState(state, filename, printer, preset);
+            quizState(state, filename, printer, preset, soundMap);
         }else if(state==2){
             editState(state, printer);
         }
     }
+
+    delete soundMap;
     std::cout << "Later, ya hopefully more memorized nerd" << std::endl;
     return 0;
 }
