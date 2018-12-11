@@ -63,6 +63,9 @@ std::string RandomQuiz::presentQuestion(){
 
 std::string RandomQuiz::checkAnswer(int answerChoice) {
     std::string answerString = currQuestion->getAnswerString(answerChoice);
+    if (answerString[0] == 'C'){
+        this->addToScore();
+    }
     outf << answerString << std::endl;
     return answerString;
 }
