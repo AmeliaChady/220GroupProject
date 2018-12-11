@@ -47,6 +47,8 @@ public:
 
     virtual std::string getScore()=0;
 
+    virtual void addToScore()=0;
+
 
 };
 #endif //INC_220GROUPPROJECT_QUIZ_H

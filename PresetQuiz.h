@@ -20,6 +20,7 @@ public:
     std::string checkAnswer(int answerChoice);
     void saveQuiz();
     std::string getScore();
+    void addToScore();
 };
 
 #endif //INC_220GROUPPROJECT_PRESETQUIZ_H
