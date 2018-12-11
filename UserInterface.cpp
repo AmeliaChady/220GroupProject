@@ -27,6 +27,7 @@ void menuState(int& state, std::string& filename, bool& printer, bool& preset){
         if(splitInput->itemCount()!=0) {
             if(splitInput->getValueAt(0) == "start"){
                 // Check start <preset or random>
+                // TODO: Allowing preset and random with amount of questions
                 state = 1;
                 printer = true;
             }else if(splitInput->getValueAt(0) == "load") {
@@ -103,60 +104,53 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset, S
                 quizFinished = true;
             }
         }
-
-        std::cout << " >";
-        // Get Input
-        std::string userInput;
-        std::getline(std::cin, userInput);
-        try{
-            List<std::string> *splitInput = split(userInput, " ");
-            // Possible functions
-            if(splitInput->getValueAt(0)=="1"){
-                std::cout << quiz->checkAnswer(1) << std::endl;
-                getNextQuestion = true;
-            }else if(splitInput->getValueAt(0)=="2"){
-                std::cout << quiz->checkAnswer(2) << std::endl;
-                getNextQuestion = true;
-            }else if(splitInput->getValueAt(0)=="3"){
-                std::cout << quiz->checkAnswer(3) << std::endl;
-                getNextQuestion = true;
-            }else if(splitInput->getValueAt(0)=="4"){
-                std::cout << quiz->checkAnswer(4) << std::endl;
-                getNextQuestion = true;
-            }else if(splitInput->getValueAt(0)=="help"){
-                std::cout << "Quiz Help:"
-                             "<1-4> -> Answers the current question as that answer"
-                             "\n"
-                             "help -> displays this message"
-                             "\n"
-                             "exit -> goes back to the main menu, not saving the quiz or current progress"
-                             "\n"
-                             "reprint -> reprints the current question"<< std::endl;
-            }else if(splitInput->getValueAt(0)=="exit"){
-                // Check exit
-                state = 0;
-                printer = true;
-            }else if(splitInput->getValueAt(0)=="reprint"){
-                std::cout << question << std::endl;
-            }else{
-                std::cout << "not valid command. type \"help\" for help" << std::endl;
-            }
-        }catch(std::invalid_argument&){
-
-        }
-    }
-
-    if(quizFinished) {
-        std::string userInput = "";
-        while (userInput != "y" && userInput != "n") {
-            std::cout << "Save? \n >";
+        if(!quizFinished) {
+            std::cout << " >";
+            // Get Input
+            std::string userInput;
             std::getline(std::cin, userInput);
-        }
-        if (userInput == "y") {
-            quiz->saveQuiz();
-            std::cout << "quiz saved\n";
+            try {
+                List<std::string> *splitInput = split(userInput, " ");
+                // Possible functions
+                if (splitInput->getValueAt(0) == "1") {
+                    std::cout << quiz->checkAnswer(1) << std::endl;
+                    getNextQuestion = true;
+                } else if (splitInput->getValueAt(0) == "2") {
+                    std::cout << quiz->checkAnswer(2) << std::endl;
+                    getNextQuestion = true;
+                } else if (splitInput->getValueAt(0) == "3") {
+                    std::cout << quiz->checkAnswer(3) << std::endl;
+                    getNextQuestion = true;
+                } else if (splitInput->getValueAt(0) == "4") {
+                    std::cout << quiz->checkAnswer(4) << std::endl;
+                    getNextQuestion = true;
+                } else if (splitInput->getValueAt(0) == "help") {
+                    std::cout << "Quiz Help:"
+                                 "<1-4> -> Answers the current question as that answer"
+                                 "\n"
+                                 "help -> displays this message"
+                                 "\n"
+                                 "exit -> goes back to the main menu, not saving the quiz or current progress"
+                                 "\n"
+                                 "reprint -> reprints the current question" << std::endl;
+                } else if (splitInput->getValueAt(0) == "exit") {
+                    // Check exit
+                    state = 0;
+                    printer = true;
+                } else if (splitInput->getValueAt(0) == "reprint") {
+                    std::cout << question << std::endl;
+                } else {
+                    std::cout << "not valid command. type \"help\" for help" << std::endl;
+                }
+            } catch (std::invalid_argument &) {
+
+            }
         }
     }
+
+    quiz->saveQuiz();
+    std::cout << quiz->getScore() << "\n";
+    std::cout << "Quiz saved!\n";
 
     delete quiz;
 }
