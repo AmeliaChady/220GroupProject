@@ -5,6 +5,7 @@
 #include "RandomQuiz.h"
 #include <fstream>
 #include <iostream>
+#include <time.h>
 
 
 //private
@@ -15,13 +16,13 @@ std::string RandomQuiz::makeQuestion(const std::pair<std::string, std::string> p
 }
 
 //public
-RandomQuiz::RandomQuiz(ArraySoundMap* soundMap, std::string readFileName, int numQuestions) {
-    this->writefile = "RandomQuiz" + ;
+RandomQuiz::RandomQuiz(SoundMap* soundMap, std::string readFileName, int numQuestions) {
+    time_t my_time = time(NULL);
+    this->writefile = "RandomQuiz " + std::to_string(my_time) ;
     this->score = 0;
     this->answQuestions = 0;
     this->quizCap = numQuestions;
     this->workingMap = soundMap;
-    workingMap->read();
     this->currQuestion = nullptr;
     this->quizBank = new ListOfWords(readFileName);
 }
@@ -40,7 +41,7 @@ std::string RandomQuiz::presentQuestion(){
     if (answQuestions < quizCap){
         std::pair<std::string, std::string> holdForQuestion = quizBank->giveRandWord();
         std::string holdForUI = makeQuestion(holdForQuestion);
-        outf.open(file, std::ios::app);
+        outf.open(writefile, std::ios::app);
         outf << holdForUI << std::endl;
         answQuestions++;
         return holdForUI;

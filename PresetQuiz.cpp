@@ -12,9 +12,8 @@ std::string PresetQuiz::makeQuestion(const std::pair<std::string, std::string> p
     return currQuestion->outputQuestion();
 }
 
-//TODO add sound map param
 //public
-PresetQuiz::PresetQuiz(ArraySoundMap* soundMap, std::string fileName){
+PresetQuiz::PresetQuiz(SoundMap* soundMap, std::string fileName){
     this->file = fileName;
     this->quizBank = new ListOfWords(fileName);
     this->quizCap = 10;

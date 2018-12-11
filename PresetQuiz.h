@@ -14,7 +14,7 @@ private:
     PresetQuiz& operator=(const PresetQuiz& presetQuizToCopy);
     std::string makeQuestion(const std::pair<std::string, std::string> pairIn);
 public:
-    PresetQuiz(ArraySoundMap* soundMap, std::string fileName);
+    PresetQuiz(SoundMap* soundMap, std::string fileName);
     ~PresetQuiz();
     std::string presentQuestion();
     std::string checkAnswer(int answerChoice);

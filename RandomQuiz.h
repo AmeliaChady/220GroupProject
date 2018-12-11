@@ -15,7 +15,7 @@ private:
     RandomQuiz& operator=(const RandomQuiz& quizToCopy);
     std::string makeQuestion(const std::pair<std::string, std::string>);
 public:
-    RandomQuiz(ArraySoundMap* soundMap, std::string fileName, int numQuestions);
+    RandomQuiz(SoundMap* soundMap, std::string fileName, int numQuestions);
     ~RandomQuiz();
     std::string presentQuestion();
     std::string checkAnswer(int answerChoice);
