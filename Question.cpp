@@ -5,6 +5,8 @@
 #include "Question.h"
 #include "ArraySoundMap.h"
 #include "Util.h"
+#include <locale>
+#include <codecvt>
 
 
 bool replace(std::string& str, const std::string& from, const std::string& to) {
@@ -126,6 +128,7 @@ std::string Question::outputQuestion(){
         questionStr = questionStr + "4. " + this->correctAnswer + "\n";
         this->correctOption = 4;
     }
+
     return questionStr;
 
 
