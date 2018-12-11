@@ -121,7 +121,7 @@ void splitTest(){
 
     testString = "abc";
     delete list;
-    list = split(testString, "");
+    list = split(testString, " ");
     if(list->getValueAt(0)=="abc"){
         std::cout << "passed" << std::endl;
         passes++;
@@ -141,9 +141,16 @@ void splitTest(){
         fails++;
     }
 
-
-
-
+    testString = "abc";
+    delete list;
+    list = split(testString, "");
+    if(list->getValueAt(0)=="a"){
+        std::cout << "passed" << std::endl;
+        passes++;
+    }else{
+        std::cout << "failed" << std::endl;
+        fails++;
+    }
 
     std::cout << "Overall:" << std::endl;
     std::cout << "Passed " << passes << " times." << std::endl;
