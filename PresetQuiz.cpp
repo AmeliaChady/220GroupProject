@@ -4,6 +4,7 @@
 
 #include <fstream>
 #include "PresetQuiz.h"
+#include <time.h>
 
 //private
 std::string PresetQuiz::makeQuestion(const std::pair<std::string, std::string> pairIn){
@@ -14,15 +15,17 @@ std::string PresetQuiz::makeQuestion(const std::pair<std::string, std::string> p
 
 //public
 PresetQuiz::PresetQuiz(SoundMap* soundMap, std::string fileName){
-    this->file = fileName;
+    time_t my_time = time(NULL);
+    this->writefile = "PresetQuiz " + std::to_string(my_time) +".txt";
     this->quizBank = new ListOfWords(fileName);
     this->quizCap = 10;
     this->score = 0;
     this->answQuestions = 0;
     this->workingMap = soundMap;
     this->currQuestion = nullptr;
+    outf.open(writefile, std::ios::app);
 }
-//TODO add destructor
+
 PresetQuiz::~PresetQuiz() {
     delete quizBank;
     quizBank = nullptr;
@@ -37,7 +40,6 @@ std::string PresetQuiz::presentQuestion(){
     if (answQuestions < quizCap){
         std::pair<std::string, std::string> holdForQuestion = quizBank->giveWordAtIndex(answQuestions);
         std::string holdForUI = makeQuestion(holdForQuestion);
-        outf.open(file, std::ios::app);
         outf << holdForUI << "/n";
         answQuestions++;
         return holdForUI;

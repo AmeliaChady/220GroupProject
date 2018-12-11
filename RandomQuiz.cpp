@@ -25,9 +25,12 @@ RandomQuiz::RandomQuiz(SoundMap* soundMap, std::string readFileName, int numQues
     this->workingMap = soundMap;
     this->currQuestion = nullptr;
     this->quizBank = new ListOfWords(readFileName);
+    outf.open(writefile, std::ios::app);
 }
 
 RandomQuiz::~RandomQuiz() {
+    outf.close();
+
     delete currQuestion;
     currQuestion = nullptr;
 
@@ -41,7 +44,6 @@ std::string RandomQuiz::presentQuestion(){
     if (answQuestions < quizCap){
         std::pair<std::string, std::string> holdForQuestion = quizBank->giveRandWord();
         std::string holdForUI = makeQuestion(holdForQuestion);
-        outf.open(writefile, std::ios::app);
         outf << holdForUI << std::endl;
         answQuestions++;
         return holdForUI;
