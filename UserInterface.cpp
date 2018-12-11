@@ -38,10 +38,10 @@ void menuState(int& state, std::string& filename, bool& printer, bool& preset){
                 }catch(std::out_of_range&){
                     std::cout << "Filename needed!" << std::endl;
                 }
-            }else if(splitInput->getValueAt(0) == "edit"){
-                // Check edit
-                state = 2;
-                printer = true;
+            //}else if(splitInput->getValueAt(0) == "edit"){
+            //    // Check edit
+            //    state = 2;
+            //    printer = true;
             }else if(splitInput->getValueAt(0) == "help"){
                 // Check help
                 std::cout << "Main Menu Help:\n"
@@ -51,8 +51,8 @@ void menuState(int& state, std::string& filename, bool& printer, bool& preset){
                              "\n"
                              "load <filename> -> sets the filename for quiz to <filename>"
                              "\n"
-                             "edit -> Sends you to the editor mode"
-                             "\n"
+                             //"edit -> Sends you to the editor mode"
+                             //"\n"
                              "help -> prints this message"
                              "\n"
                              "quit -> exits out of the program"<< std::endl;
@@ -161,6 +161,7 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset, S
     delete quiz;
 }
 
+/*
 void editState(int& state, bool& printer){
     // Text Blurb?
     if(printer){
@@ -223,7 +224,7 @@ void editState(int& state, bool& printer){
                                  "\n"
                                  "load <filename> -> loads the word list at that filename if it exists"
                                  "\n"
-                                 "add <spelling> <phonetic> -> adds a new word with the spelling and phonetic descriptions to the list"
+                                 "add <spelling> <phonetic> -> adds a new word with the spelling and ASCII phonetic descriptions to the list"
                                  "\n"
                                  "remove <spelling> -> removes a word by is spelling definition"
                                  "\n"
@@ -245,9 +246,11 @@ void editState(int& state, bool& printer){
 
     delete words;
 }
+*/
 
 int main(){
     SoundMap* soundMap = new ArraySoundMap();
+    soundMap->read();
     std::string filename = "default.csv";
     int state = 0;
     bool printer = true;
@@ -258,9 +261,9 @@ int main(){
             menuState(state, filename, printer, preset);
         }else if(state==1){
             quizState(state, filename, printer, preset, soundMap);
-        }else if(state==2){
-            editState(state, printer);
-        }
+        }//else if(state==2){
+        //    editState(state, printer);
+        //}
     }
 
     delete soundMap;
