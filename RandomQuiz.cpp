@@ -6,6 +6,8 @@
 #include <fstream>
 #include <iostream>
 #include <time.h>
+#include <sstream>
+#include <iomanip>
 
 
 //private
@@ -17,8 +19,14 @@ std::string RandomQuiz::makeQuestion(const std::pair<std::string, std::string> p
 
 //public
 RandomQuiz::RandomQuiz(SoundMap* soundMap, std::string readFileName, int numQuestions) {
-    time_t my_time = time(NULL);
-    this->writefile = "RandomQuiz " + std::to_string(my_time) ;
+    auto t = std::time(nullptr);
+    auto tm = *std::localtime(&t);
+
+    std::ostringstream oss;
+    oss << std::put_time(&tm, "%d-%m-%Y %H-%M-%S");
+    auto str = oss.str();
+
+    this->writefile = "RandomQuiz " + str;
     this->score = 0;
     this->answQuestions = 0;
     this->quizCap = numQuestions;
