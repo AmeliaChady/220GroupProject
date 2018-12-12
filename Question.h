@@ -30,5 +30,6 @@ public:
 
     std::string getAnswerString(int userAnswer); //returns either correct, or incorrect- answer is " "
 
+
 };
 #endif //INC_220GROUPPROJECT_QUESTION_H
