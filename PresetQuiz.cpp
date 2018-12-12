@@ -62,3 +62,7 @@ void PresetQuiz::saveQuiz(){
 std::string PresetQuiz::getScore(){
     return "Score: " + std::to_string(score);
 }
+
+void PresetQuiz::addToScore(){
+    this->score++;
+}
