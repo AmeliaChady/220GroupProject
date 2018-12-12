@@ -10,5 +10,7 @@
 
 std::string trim(std::string stringToTrim);
 List<std::string>* split(std::string stringToSplit, std::string delim);
+std::string AtU(std::string ascii);
+std::string ASCIItoUNICODE(std::string ascii);
 
 #endif //INC_220GROUPPROJECT_UTIL_H

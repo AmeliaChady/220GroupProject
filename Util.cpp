@@ -59,3 +59,24 @@ List<std::string>* split(std::string stringToSplit, std::string delim){
 
      return splitted;
 }
+
+std::string AtU(std::string ascii){
+    return ASCIItoUNICODE(ascii);
+}
+
+std::string ASCIItoUNICODE(std::string ascii){
+    std::string[] letters = {"p", "b", "m", ".w", "f", "v", "T", "D", "t", "d", "s", "z", "n",
+                            "l", ".S", ".Z", "S", "Z", "R", "j", "k", "g", "N", "h",
+                            "i", "I", "e", "E", "&", ")", "u", "U", "o", "^", "O", "A"};
+    std::string[] unicode = {"p", "b", "m", "w", "f", "v", "θ", "ð", "t", "d", "s", "z", "n",
+                            "l", "ʧ", "ʤ", "ʃ", "ʒ", "r", "j", "k", "g", "ŋ", "h",
+                            "i", "ɪ", "e", "ɛ", "æ", "ə", "u", "ʊ", "o", "ʌ", "ɔ", "ɑ"};
+    int arraySize = 36;
+
+    for(int i = 0; i<arraySize; i++){
+        if(ascii == letters[i]){
+            return unicode[i];
+        }
+    }
+    throw std::invalid_argument("Conversion doesn't exist");
+}
