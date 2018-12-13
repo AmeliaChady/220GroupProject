@@ -52,11 +52,11 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     std::string charAsString(1, character);
     if (character == '.'){
         char otherChar = correctAnswer[index + 1];
-        charAsString = character + otherChar;
+        charAsString += std::string(1, otherChar);
     }
     else if (index > 0 && correctAnswer[index - 1 ] == '.'){
         char otherChar = '.';
-        charAsString = otherChar + character;
+        charAsString = std::string(1, otherChar) + charAsString;
     }
     Sound* toUse = soundMap->getKey(charAsString);
     std::string toInsert = toUse->getSimilarSymbol();
@@ -68,11 +68,11 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     std::string charAsString2(1, character);
     if (character == '.'){
         char otherChar = correctAnswer[index + 1];
-        charAsString2 = character + otherChar;
+        charAsString2 += std::string(1, otherChar);
     }
     else if (index > 0 && correctAnswer[index - 1 ] == '.'){
         char otherChar = '.';
-        charAsString2 = otherChar + character;
+        charAsString2 = std::string(1, otherChar) + charAsString;
     }
     toUse = soundMap->getKey(charAsString2);
     toInsert = toUse->getSimilarSymbol();
@@ -84,11 +84,11 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     std::string charAsString3(1, character);
     if (character == '.'){
         char otherChar = correctAnswer[index + 1];
-        charAsString3 = character + otherChar;
+        charAsString3 += std::string(1, otherChar);
     }
     else if (index > 0 && correctAnswer[index - 1 ] == '.'){
         char otherChar = '.';
-        charAsString3 = otherChar + character;
+        charAsString3 = std::string(1, otherChar) + charAsString;
     }
     toUse = soundMap->getKey(charAsString2);
     toInsert = toUse->getSimilarSymbol();

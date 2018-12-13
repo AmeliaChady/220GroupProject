@@ -9,7 +9,7 @@
 #include "ListOfWordsChanger.h"
 #include <iostream>
 
-void menuState(int& state, std::string& filename, bool& printer, bool& preset){
+void menuState(int& state, std::string& filename, bool& printer, bool& preset, int& questions){
     // Text Blurb?
     if(printer) {
         std::cout << "--Main Menu--------" << std::endl;
@@ -28,8 +28,33 @@ void menuState(int& state, std::string& filename, bool& printer, bool& preset){
             if(splitInput->getValueAt(0) == "start"){
                 // Check start <preset or random>
                 // TODO: Allowing preset and random with amount of questions
-                state = 1;
-                printer = true;
+                try{
+                    std::string type = splitInput->getValueAt(1);
+                    if(type == "preset"){
+                        preset = true;
+                    }else if(type == "random"){
+                        preset = false;
+                        try{
+                            questions = std::stoi(splitInput->getValueAt(2));
+                        }catch(std::exception){
+                            throw std::invalid_argument("");
+                        }
+                    }else{
+                        throw std::invalid_argument("");
+                    }
+                    state = 1;
+                    printer = true;
+                }catch(std::out_of_range){
+                    preset = false;
+                    questions = 10;
+                    state = 1;
+                    printer = true;
+                }catch(std::invalid_argument){
+                    std::cout << "invalid argument(s)!" << std::endl;
+                    state = 0;
+                    printer = false;
+                }
+
             }else if(splitInput->getValueAt(0) == "load") {
                 // Check load <filename>
                 try{
@@ -73,7 +98,7 @@ void menuState(int& state, std::string& filename, bool& printer, bool& preset){
 
 }
 
-void quizState(int& state, std::string& filename, bool& printer, bool& preset, SoundMap* soundMap){
+void quizState(int& state, std::string& filename, bool& printer, bool& preset, SoundMap* soundMap, int& questions){
     // Text Blurb?
     if(printer){
         std::cout << "--Quiz--------" << std::endl;
@@ -249,12 +274,13 @@ int main(){
     int state = 0;
     bool printer = true;
     bool preset = false;
+    int questions = 0;
 
     while(state>=0){
         if(state==0){
-            menuState(state, filename, printer, preset);
+            menuState(state, filename, printer, preset, questions);
         }else if(state==1){
-            quizState(state, filename, printer, preset, soundMap);
+            quizState(state, filename, printer, preset, soundMap, questions);
         }//else if(state==2){
         //    editState(state, printer);
         //}

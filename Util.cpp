@@ -67,11 +67,11 @@ std::string AtU(std::string ascii){
 std::string ASCIItoUNICODE(std::string ascii){
     std::string letters[] = {"p", "b", "m", ".w", "f", "v", "T", "D", "t", "d", "s", "z", "n",
                             "l", ".S", ".Z", "S", "Z", "R", "j", "k", "g", "N", "h",
-                            "i", "I", "e", "E", "&", ")", "u", "U", "o", "^", "O", "A"};
+                            "i", "I", "e", "E", "&", ")", "u", "U", "o", "^", "O", "A", "H"};
     std::string unicode[] = {"p", "b", "m", "w", "f", "v", "θ", "ð", "t", "d", "s", "z", "n",
                             "l", "ʧ", "ʤ", "ʃ", "ʒ", "r", "j", "k", "g", "ŋ", "h",
-                            "i", "ɪ", "e", "ɛ", "æ", "ə", "u", "ʊ", "o", "ʌ", "ɔ", "ɑ"};
-    int arraySize = 36;
+                            "i", "ɪ", "e", "ɛ", "æ", "ə", "u", "ʊ", "o", "ʌ", "ɔ", "ɑ", "ʰ"};
+    int arraySize = 37;
 
     for(int i = 0; i<arraySize; i++){
         if(ascii == letters[i]){
