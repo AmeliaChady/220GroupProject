@@ -49,6 +49,10 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     int length = correctAnswer.size();
     int index = rand() % length;
     char character = correctAnswer[index];
+    while (character == '`'){
+        index = rand() % length;
+        character = correctAnswer[index];
+    }
     std::string charAsString(1, character);
     if (character == '.'){
         char otherChar = correctAnswer[index + 1];
@@ -58,6 +62,14 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
         char otherChar = '.';
         charAsString = std::string(1, otherChar) + charAsString;
     }
+    if (character == '~'){
+        char otherChar = correctAnswer[index + 1];
+        charAsString += std::string(1, otherChar);
+    }
+    else if (index > 0 && correctAnswer[index - 1] == '~'){
+        char otherChar = '~';
+        charAsString = std::string(1, otherChar) + charAsString;
+    }
     Sound* toUse = soundMap->getKey(charAsString);
     std::string toInsert = toUse->getSimilarSymbol();
     std::string correctCopy = correctAnswer;
@@ -65,6 +77,10 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     this->wrongOne = correctCopy;
     index = rand() % length;
     character = correctAnswer[index];
+    while (character == '`'){
+        index = rand() % length;
+        character = correctAnswer[index];
+    }
     std::string charAsString2(1, character);
     if (character == '.'){
         char otherChar = correctAnswer[index + 1];
@@ -74,6 +90,14 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
         char otherChar = '.';
         charAsString2 = std::string(1, otherChar) + charAsString;
     }
+    if (character == '~'){
+        char otherChar = correctAnswer[index + 1];
+        charAsString2 += std::string(1, otherChar);
+    }
+    else if (index > 0 && correctAnswer[index - 1] == '~'){
+        char otherChar = '~';
+        charAsString2 = std::string(1, otherChar) + charAsString;
+    }
     toUse = soundMap->getKey(charAsString2);
     toInsert = toUse->getSimilarSymbol();
     correctCopy = correctAnswer;
@@ -81,6 +105,10 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     this->wrongTwo = correctCopy;
     index = rand() % length;
     character = correctAnswer[index];
+    while (character == '`'){
+        index = rand() % length;
+        character = correctAnswer[index];
+    }
     std::string charAsString3(1, character);
     if (character == '.'){
         char otherChar = correctAnswer[index + 1];
@@ -88,6 +116,14 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     }
     else if (index > 0 && correctAnswer[index - 1 ] == '.'){
         char otherChar = '.';
+        charAsString3 = std::string(1, otherChar) + charAsString;
+    }
+    if (character == '~'){
+        char otherChar = correctAnswer[index + 1];
+        charAsString3 += std::string(1, otherChar);
+    }
+    else if (index > 0 && correctAnswer[index - 1] == '~'){
+        char otherChar = '~';
         charAsString3 = std::string(1, otherChar) + charAsString;
     }
     toUse = soundMap->getKey(charAsString2);
