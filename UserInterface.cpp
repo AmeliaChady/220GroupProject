@@ -111,7 +111,7 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset, S
         quiz = new PresetQuiz(soundMap, filename);
     }else{
         // Random Quiz also needs a file name in the constructor
-        quiz = new RandomQuiz(soundMap, filename, 10);
+        quiz = new RandomQuiz(soundMap, filename, questions);
     }
 
     bool quizFinished = false;
