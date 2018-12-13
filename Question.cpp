@@ -22,6 +22,7 @@ bool unicodeConvert(std::string& input){
         std::string uniSymbol = unicode[i];
         replace(input, letter, uniSymbol);
     }
+    return true;
 }
 
 bool replace(std::string& str, const std::string& from, const std::string& to) {
