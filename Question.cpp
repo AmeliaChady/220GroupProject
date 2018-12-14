@@ -152,36 +152,36 @@ std::string Question::outputQuestion(){
     std::string questionStr = "";
     if (order == 0) {
         questionStr = this->englishWord + "\n";
-        questionStr = questionStr + "1. " + this->correctAnswer + "\n";
-        questionStr = questionStr + "2. " + this->wrongOne + "\n";
-        questionStr = questionStr + "3. " + this->wrongTwo + "\n";
-        questionStr = questionStr + "4. " + this->wrongThree + "\n";
+        questionStr = questionStr + "1. [" + this->correctAnswer + "]\n";
+        questionStr = questionStr + "2. [" + this->wrongOne + "]\n";
+        questionStr = questionStr + "3. [" + this->wrongTwo + "]\n";
+        questionStr = questionStr + "4. [" + this->wrongThree + "]\n";
 
         this->correctOption = 1;
     }
 
     else if (order == 1) {
         questionStr = this->englishWord + "\n";
-        questionStr = questionStr + "1. " + this->wrongOne + "\n";
-        questionStr = questionStr + "2. " + this->correctAnswer + "\n";
-        questionStr = questionStr + "3. " + this->wrongTwo + "\n";
-        questionStr = questionStr + "4. " + this->wrongThree + "\n";
+        questionStr = questionStr + "1. [" + this->wrongOne + "]\n";
+        questionStr = questionStr + "2. [" + this->correctAnswer + "]\n";
+        questionStr = questionStr + "3. [" + this->wrongTwo + "]\n";
+        questionStr = questionStr + "4. [" + this->wrongThree + "]\n";
         this->correctOption = 2;
     }
     else if (order == 2) {
         questionStr = this->englishWord + "\n";
-        questionStr = questionStr + "1. " + this->wrongOne + "\n";
-        questionStr = questionStr + "2. " + this->wrongTwo + "\n";
-        questionStr = questionStr + "3. " + this->correctAnswer + "\n";
-        questionStr = questionStr + "4. " + this->wrongThree + "\n";
+        questionStr = questionStr + "1. [" + this->wrongOne + "]\n";
+        questionStr = questionStr + "2. [" + this->wrongTwo + "]\n";
+        questionStr = questionStr + "3. [" + this->correctAnswer + "]\n";
+        questionStr = questionStr + "4. [" + this->wrongThree + "]\n";
         this->correctOption = 3;
     }
     else { //order == 3
         questionStr = this->englishWord + "\n";
-        questionStr = questionStr + "1. " + this->wrongOne + "\n";
-        questionStr = questionStr + "2. " + this->wrongTwo + "\n";
-        questionStr = questionStr + "3. " + this->wrongThree + "\n";
-        questionStr = questionStr + "4. " + this->correctAnswer + "\n";
+        questionStr = questionStr + "1. [" + this->wrongOne + "]\n";
+        questionStr = questionStr + "2. [" + this->wrongTwo + "]\n";
+        questionStr = questionStr + "3. [" + this->wrongThree + "]\n";
+        questionStr = questionStr + "4. [" + this->correctAnswer + "]\n";
         this->correctOption = 4;
     }
 
