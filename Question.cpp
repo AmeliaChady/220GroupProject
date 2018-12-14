@@ -89,7 +89,7 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     }
     else if (index > 0 && correctAnswer[index - 1 ] == '.'){
         char otherChar = '.';
-        charAsString2 = std::string(1, otherChar) + charAsString;
+        charAsString2 = std::string(1, otherChar) + charAsString2;
     }
     if (character == '~'){
         char otherChar = correctAnswer[index + 1];
@@ -97,7 +97,7 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     }
     else if (index > 0 && correctAnswer[index - 1] == '~'){
         char otherChar = '~';
-        charAsString2 = std::string(1, otherChar) + charAsString;
+        charAsString2 = std::string(1, otherChar) + charAsString2;
     }
     toUse = soundMap->getKey(charAsString2);
     toInsert = toUse->getSimilarSymbol();
@@ -117,7 +117,7 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     }
     else if (index > 0 && correctAnswer[index - 1 ] == '.'){
         char otherChar = '.';
-        charAsString3 = std::string(1, otherChar) + charAsString;
+        charAsString3 = std::string(1, otherChar) + charAsString3;
     }
     if (character == '~'){
         char otherChar = correctAnswer[index + 1];
@@ -125,7 +125,7 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     }
     else if (index > 0 && correctAnswer[index - 1] == '~'){
         char otherChar = '~';
-        charAsString3 = std::string(1, otherChar) + charAsString;
+        charAsString3 = std::string(1, otherChar) + charAsString3;
     }
     toUse = soundMap->getKey(charAsString3);
     toInsert = toUse->getSimilarSymbol();
