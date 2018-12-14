@@ -5,6 +5,8 @@
 #include <fstream>
 #include "PresetQuiz.h"
 #include <time.h>
+#include <sstream>
+#include <iomanip>
 
 //private
 std::string PresetQuiz::makeQuestion(const std::pair<std::string, std::string> pairIn){
@@ -15,8 +17,14 @@ std::string PresetQuiz::makeQuestion(const std::pair<std::string, std::string> p
 
 //public
 PresetQuiz::PresetQuiz(SoundMap* soundMap, std::string fileName){
-    time_t my_time = time(NULL);
-    this->writefile = "PresetQuiz " + std::to_string(my_time) +".txt";
+    auto t = std::time(nullptr);
+    auto tm = *std::localtime(&t);
+
+    std::ostringstream oss;
+    oss << std::put_time(&tm, "%d-%m-%Y %H-%M-%S");
+    auto str = oss.str();
+
+    this->writefile = "PresetQuiz " + str;
     this->quizBank = new ListOfWords(fileName);
     this->quizCap = 10;
     this->score = 0;
