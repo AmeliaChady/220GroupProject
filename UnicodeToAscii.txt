@@ -13,4 +13,5 @@
  e -> e   |  ə -> )   |  o -> o   |  ɑ -> A   |  ɑɪ -> AI
 
 // Others
-H -> ʰ
+H -> ʰ  | Stands for aspiration
+~ -> ̃   | Stands for nazalization. must be infront of the letter.

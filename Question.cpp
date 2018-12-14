@@ -50,7 +50,7 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     int length = correctAnswer.size();
     int index = rand() % length;
     char character = correctAnswer[index];
-    while (character == '`'){
+    while (character == 'H'){
         index = rand() % length;
         character = correctAnswer[index];
     }
@@ -78,7 +78,7 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     this->wrongOne = correctCopy;
     index = rand() % length;
     character = correctAnswer[index];
-    while (character == '`'){
+    while (character == 'H'){
         index = rand() % length;
         character = correctAnswer[index];
     }
@@ -106,7 +106,7 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     this->wrongTwo = correctCopy;
     index = rand() % length;
     character = correctAnswer[index];
-    while (character == '`'){
+    while (character == 'H'){
         index = rand() % length;
         character = correctAnswer[index];
     }
@@ -127,7 +127,7 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
         char otherChar = '~';
         charAsString3 = std::string(1, otherChar) + charAsString;
     }
-    toUse = soundMap->getKey(charAsString2);
+    toUse = soundMap->getKey(charAsString3);
     toInsert = toUse->getSimilarSymbol();
     correctCopy = correctAnswer;
     replace(correctCopy, charAsString3, toInsert);

@@ -40,6 +40,14 @@ o
 ^
 O
 A
+//Nazalized
+~i
+~^
+~I
+~u
+~o
+~E
+~O
 #
 // These are the connections between sounds
 // Continues until the # shows up
@@ -65,15 +73,15 @@ R j
 k g N
 g N
 //Vowels
-i I e E & u
-I e E & U o
+i ~i I e E & u
+I ~I e E & U o
 e ) E & ^ O o
-E ) & ^ O o
+E ~E) & ^ O o
 & ) A ^ o
 ) u U ^ O o
-u U ^ O o
+u ~u U ^ O o
 U ^ O o
-o ^ O A
-^ O A
-O A
+o ~o ^ O A
+^ ~^ O A
+O ~O A
 #
