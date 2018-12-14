@@ -149,9 +149,8 @@ Question::Question(std::pair<std::string, std::string> word, std::string wrongOn
 
 std::string Question::outputQuestion(){
     int order = rand() % 4;
-    std::string questionStr = "";
+    std::string questionStr = "<"+this->englishWord + ">\n";
     if (order == 0) {
-        questionStr = this->englishWord + "\n";
         questionStr = questionStr + "1. [" + this->correctAnswer + "]\n";
         questionStr = questionStr + "2. [" + this->wrongOne + "]\n";
         questionStr = questionStr + "3. [" + this->wrongTwo + "]\n";
@@ -161,7 +160,6 @@ std::string Question::outputQuestion(){
     }
 
     else if (order == 1) {
-        questionStr = this->englishWord + "\n";
         questionStr = questionStr + "1. [" + this->wrongOne + "]\n";
         questionStr = questionStr + "2. [" + this->correctAnswer + "]\n";
         questionStr = questionStr + "3. [" + this->wrongTwo + "]\n";
@@ -169,7 +167,6 @@ std::string Question::outputQuestion(){
         this->correctOption = 2;
     }
     else if (order == 2) {
-        questionStr = this->englishWord + "\n";
         questionStr = questionStr + "1. [" + this->wrongOne + "]\n";
         questionStr = questionStr + "2. [" + this->wrongTwo + "]\n";
         questionStr = questionStr + "3. [" + this->correctAnswer + "]\n";
@@ -177,7 +174,6 @@ std::string Question::outputQuestion(){
         this->correctOption = 3;
     }
     else { //order == 3
-        questionStr = this->englishWord + "\n";
         questionStr = questionStr + "1. [" + this->wrongOne + "]\n";
         questionStr = questionStr + "2. [" + this->wrongTwo + "]\n";
         questionStr = questionStr + "3. [" + this->wrongThree + "]\n";
