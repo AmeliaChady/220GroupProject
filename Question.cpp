@@ -11,13 +11,16 @@
 bool replace(std::string& str, const std::string& from, const std::string& to);
 
 bool unicodeConvert(std::string& input){
-    std::string letters[] = {"p", "b", "m", ".w", "f", "v", "T", "D", "t", "d", "s", "z", "n",
-                             "l", ".S", ".Z", "S", "Z", "R", "j", "k", "g", "N", "h",
-                             "i", "I", "e", "E", "&", ")", "u", "U", "o", "^", "O", "A", "H"};
-    std::string unicode[] = {"p", "b", "m", "w", "f", "v", "θ", "ð", "t", "d", "s", "z", "n",
-                             "l", "ʧ", "ʤ", "ʃ", "ʒ", "r", "j", "k", "g", "ŋ", "h",
-                             "i", "ɪ", "e", "ɛ", "æ", "ə", "u", "ʊ", "o", "ʌ", "ɔ", "ɑ", "ʰ"};
-    for (int i = 0; i < 37; ++i){
+    std::string letters[] = { "p",  "b",  "m", ".w",  "f",  "v",  "T",  "D",  "t",  "d",  "s",  "z",  "n",
+                              "l", ".S", ".Z",  "S",  "Z",  "R",  "j",  "k",  "g",  "N",  "h",  "r",
+                              "i",  "I",  "e",  "E",  "&",  ")",  "u",  "U",  "o",  "^",  "O",  "A",  "y",  "H",
+                             "~i", "~I", "~e", "~E", "~&", "~)", "~u", "~U", "~o", "~^", "~O", "~A", "~y"};
+    std::string unicode[] = { "p",  "b",  "m",  "w",  "f",  "v",  "θ",  "ð",  "t",  "d",  "s",  "z",  "n",
+                              "l",  "ʧ",  "ʤ",  "ʃ",  "ʒ",  "r",  "j",  "k",  "g",  "ŋ",  "h",  "ɾ",
+                              "i",  "ɪ",  "e",  "ɛ",  "æ",  "ə",  "u",  "ʊ",  "o",  "ʌ",  "ɔ",  "ɑ", "y",  "ʰ",
+                              "̃i",  "̃ɪ",  "̃e",  "̃ɛ",  "̃æ",  "̃ə",  "̃u",  "̃ʊ",  "̃o",  "̃ʌ",  "̃ɔ",  "̃ɑ", "̃̃y"};
+    int size = 52;
+    for (int i = 0; i < size; ++i){
         std::string letter = letters[i];
         std::string uniSymbol = unicode[i];
         replace(input, letter, uniSymbol);
