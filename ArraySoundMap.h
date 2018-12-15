@@ -19,13 +19,36 @@ private:
     
 
 public:
+    /**
+     * Constructor, using the default SoundMap loading file: "defaultSounds.txt"
+     */
     ArraySoundMap();
+    /**
+     * Constructs ArraySoundMap off the passed fileName
+     * @param fileName name of the file to load
+     */
     ArraySoundMap(std::string fileName);
+    /**
+     * Destructor
+     * Deletes its Sound objects
+     */
     ~ArraySoundMap();
-
+    /**
+     * Loads and reads the file given to soundMap
+     * @throws std::exception if the file does not exist
+     */
     void read();
 
+    /**
+     * @returns the fileName used to construct the SoundMap
+     */
     std::string getFileName();
+    /**
+     * Returns the Sound object connected to the key
+     * @param key ASCii Representation of an IPA Character described
+     * @returns The connected SoundObject
+     * @throws std::invalid_argument if the key doesn't exist
+     */
     Sound* getKey(std::string key);
 
 };

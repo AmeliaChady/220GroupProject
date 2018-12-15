@@ -24,8 +24,8 @@ ListOfWords::ListOfWords(std::string fileNameIn){
     std::pair<std::string, std::string> inputPair;
     std::string inputStr;
     if (!listInput){
-        std::cout<<"File is not in directory"<<std::endl;
-        exit(1);
+        //std::cout<<"File is not in directory"<<std::endl;
+        throw std::invalid_argument("File does not exist!");
     }
 
     while (getline(listInput, inputStr)){
