@@ -23,8 +23,8 @@ protected:
     std::ofstream outf;
 private:
     /*
-     * asks for Question object to be made
-     * @returns Question object temp void
+     * deletes previous question object (stored in currQuestion), makes a new question object
+     * and returns the string containing the question & answer choices from the Question Interface
      */
     virtual std::string makeQuestion(const std::pair<std::string, std::string> pairIn)=0;
 
@@ -32,21 +32,35 @@ private:
 
 public:
     /*
-     * creates Question object, asks question and passes resulting string up to UI
-     * throws std::out_of_range error if questionCounter is greater than or equal to number of questions in quiz
-     *
-     */
+    * gets English/IPA pair from ListOfWords interface, passes the pair and
+    * gets a question to/from the Question interface and writes the resulting string to
+    * a file
+    * @return question string
+    */
     virtual std::string presentQuestion()=0;
 
     /*
-     * given answer choice (1,2,3,4), passes
+     * sends answerChoice to the Question interface, adds to the score if the resulting string
+     * starts with 'C' (correct), and writes the answer string to a file
+     * @returns answer string provided by Question
      */
     virtual std::string checkAnswer(int answerChoice)=0;
 
+    /*
+     * writes the score to a file and closes the write file stream
+     */
     virtual void saveQuiz()=0;
 
+    /*
+     * returns Score: # out of ~
+     * where # is the string of the score property
+     * where ~ is the quiz capacity
+     */
     virtual std::string getScore()=0;
 
+    /*
+     * adds one to the score property
+     */
     virtual void addToScore()=0;
 
 

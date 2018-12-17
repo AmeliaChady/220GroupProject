@@ -71,7 +71,7 @@ void PresetQuiz::saveQuiz(){
 }
 
 std::string PresetQuiz::getScore(){
-    return "Score: " + std::to_string(score);
+    return "Score: " + std::to_string(score) + " out of  " + std::to_string(quizCap);
 }
 
 void PresetQuiz::addToScore(){
