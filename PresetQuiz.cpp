@@ -35,6 +35,10 @@ PresetQuiz::PresetQuiz(SoundMap* soundMap, std::string fileName){
 }
 
 PresetQuiz::~PresetQuiz() {
+    if (outf.is_open()){
+        outf.close();
+    }
+
     delete quizBank;
     quizBank = nullptr;
 

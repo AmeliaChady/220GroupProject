@@ -37,7 +37,9 @@ RandomQuiz::RandomQuiz(SoundMap* soundMap, std::string readFileName, int numQues
 }
 
 RandomQuiz::~RandomQuiz() {
-    outf.close();
+    if (outf.is_open()){
+        outf.close();
+    }
 
     delete currQuestion;
     currQuestion = nullptr;

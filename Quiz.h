@@ -31,6 +31,7 @@ private:
     //writes to file to store past tests
 
 public:
+    //virtual ~Quiz()=0;
     /*
     * gets English/IPA pair from ListOfWords interface, passes the pair and
     * gets a question to/from the Question interface and writes the resulting string to
