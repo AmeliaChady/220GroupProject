@@ -10,6 +10,11 @@
 
 bool replace(std::string& str, const std::string& from, const std::string& to);
 
+/**
+ * converts a given string from ASCII to Unicode, makes certain phonetic symbols more readable
+ * @param input the ASCII string to be converted
+ * @return a Unicode version of the ASCII string
+ */
 bool unicodeConvert(std::string& input){
     std::string letters[] = { "p",  "b",  "m", ".w",  "f",  "v",  "T",  "D",  "t",  "d",  "s",  "z",  "n",
                               "l", ".S", ".Z",  "S",  "Z",  "r",  "R",  "j",  "k",  "g",  "N",  "h",
@@ -27,7 +32,13 @@ bool unicodeConvert(std::string& input){
     }
     return true;
 }
-
+/***
+ * Replaces part of a string with a different string
+ * @param str the string to be edited
+ * @param from the part of the string to be changed
+ * @param to the string to replace from
+ * @return
+ */
 bool replace(std::string& str, const std::string& from, const std::string& to) {
     size_t start_pos = str.find(from);
     if(start_pos == std::string::npos)
@@ -35,7 +46,9 @@ bool replace(std::string& str, const std::string& from, const std::string& to) {
     str.replace(start_pos, from.length(), to);
     return true;
 }
-
+/***
+ * Constructor
+ */
 Question::Question(){
     englishWord = "";
     correctAnswer = "";
@@ -44,7 +57,11 @@ Question::Question(){
     wrongThree = "";
     correctOption = 0;
 }
-
+/***
+ * Generates a question with 3 incorrect multiple choice answers that are similar to the correct answer
+ * @param word Pair contains an english word and its phonetic translation
+ * @param soundMap used to find similar phonetic symbols for the part of the correctAnswer getting replaced
+ */
 //generates a new question, uses the soundMap to generate 3 random incorrect questions
 //the pair here is output from wordList originally, first string is the english word and second string is the correct phonetic translation
 Question::Question(const std::pair<std::string,std::string> word, SoundMap* soundMap){
@@ -141,6 +158,13 @@ Question::Question(const std::pair<std::string,std::string> word, SoundMap* soun
     unicodeConvert(wrongThree);
 
 }
+/***
+ * Constructor used for testing without a soundMap
+ * @param word English word and its phonetic translation
+ * @param wrongOneIn hardcoded wrong answer
+ * @param wrongTwoIn hardcoded wrong answer
+ * @param wrongThreeIn hardcoded wrong answer
+ */
 Question::Question(std::pair<std::string, std::string> word, std::string wrongOneIn, std::string wrongTwoIn, std::string wrongThreeIn){
     this->englishWord = std::get<0>(word);
     this->correctAnswer = std::get<1>(word);
@@ -149,6 +173,10 @@ Question::Question(std::pair<std::string, std::string> word, std::string wrongOn
     this->wrongThree = wrongThreeIn;
 
 }
+/***
+ * Outputs the question for the use to answer
+ * @return A string with the english word at the top and the correct answer and wrong anwers in random order
+ */
 
 std::string Question::outputQuestion(){
     int order = rand() % 4;
@@ -190,7 +218,11 @@ std::string Question::outputQuestion(){
 }
 
 
-
+/***
+ * Takes the users answer to a question and checks it
+ * @param userAnswer int option for the multiple choice question
+ * @return A string telling the user if they were correct or incorrect
+ */
 
 std::string Question::getAnswerString(int userAnswer){
     std::string answerString = "";
