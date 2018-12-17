@@ -1,5 +1,6 @@
 //
 // Created by Amelia Chady on 11/27/2018.
+// An implementation of ArraySoundMap
 //
 
 #include "ArraySoundMap.h"

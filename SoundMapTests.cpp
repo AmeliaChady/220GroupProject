@@ -1,5 +1,6 @@
 //
 // Created by Amelia Chady on 11/27/2018.
+// Testing for Sound and SoundMap objects.
 //
 
 #include <iostream>

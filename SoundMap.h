@@ -1,5 +1,6 @@
 //
 // Created by Amelia Chady on 11/27/2018.
+// Abstract Data Type that allows a person to get a Sound Object based off a key, and that loads those sounds from a file
 //
 
 #ifndef INC_220GROUPPROJECT_SOUNDMAP_H

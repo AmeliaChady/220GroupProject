@@ -1,5 +1,6 @@
 //
 // Created by Amelia Chady on 11/30/2018.
+// Utility File
 //
 
 #ifndef INC_220GROUPPROJECT_UTIL_H

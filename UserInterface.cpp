@@ -1,6 +1,8 @@
 //
 // Created by Amelia Chady on 12/1/2018.
+// Allows the user to use the program
 //
+
 #include "Util.h"
 #include "List.h"
 #include "Quiz.h"

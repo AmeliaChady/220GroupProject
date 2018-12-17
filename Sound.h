@@ -1,5 +1,6 @@
 //
 // Created by Amelia Chady on 11/27/2018.
+// An object that represents an IPA sound, that allows a user to get similar IPA symbols
 //
 
 #ifndef INC_220GROUPPROJECT_SOUND_H

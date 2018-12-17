@@ -1,6 +1,8 @@
 //
 // Created by Amelia Chady on 11/30/2018.
+// Testing Util functions
 //
+
 #include <string>
 #include <iostream>
 #include "Util.h"

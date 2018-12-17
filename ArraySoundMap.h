@@ -1,5 +1,6 @@
 //
 // Created by Amelia Chady on 11/27/2018.
+// Am implementation of SoundMap that uses arrays.
 //
 
 #ifndef INC_220GROUPPROJECT_ARRAYSOUNDMAP_H
