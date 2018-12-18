@@ -312,7 +312,7 @@ void editState(int& state, bool& printer){
 int main(){
     SoundMap* soundMap = new ArraySoundMap();
     soundMap->read();
-    std::string filename = "default.csv";
+    std::string filename = "RandomQuizBank.csv";
     int state = 0;
     bool printer = true;
     bool preset = false;

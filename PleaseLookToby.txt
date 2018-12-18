@@ -1,0 +1,8 @@
+Hey,
+Please make sure the following files are copied into the location of your UserInterface.exe (and TestStuff)
+    > RandomQuizBank.csv
+    > defaultSounds.txt
+    > Quiz1.csv
+    > Quiz2.csv
+    > Quiz3.csv
+    > testSounds.txt
