@@ -10,6 +10,8 @@
 #include "PresetQuiz.h"
 #include "ListOfWordsChanger.h"
 #include <iostream>
+#include <typeinfo>
+#include <string.h>
 
 void menuState(int& state, std::string& filename, bool& printer, bool& preset, int& questions){
     // Text Blurb?
@@ -211,7 +213,12 @@ void quizState(int& state, std::string& filename, bool& printer, bool& preset, S
         std::cout << quiz->getScore() << "\n";
         std::cout << "Quiz saved!\n";
 
-        delete quiz;
+        if (strcmp(typeid(quiz).name(), "RandomQuiz") == 0){
+            delete (RandomQuiz *) quiz;
+        } else {
+            delete (PresetQuiz *) quiz;
+        }
+
     }
 }
 
