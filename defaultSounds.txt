@@ -82,16 +82,28 @@ k g N
 g N
 r t T D R
 //Vowels
-i ~i I e E & u
-I ~I e E & U o
-e ~e ) E & ^ O o
-E ~E ) & ^ O o
-& ~& ) A ^ o
-) ~) u U ^ O o
-u ~u U ^ O o
-U ~U ^ O o
-o ~o ^ O A
-^ ~^ O A
-O ~O A
-y ~y i I e E & u
+i ~i I e E & u ~I ~e ~E ~& ~u
+~i I e E & u ~I ~e ~E ~& ~u
+I ~I e E & U o ~e ~E ~& ~U ~o
+~I e E & U o ~e ~E ~& ~U ~o
+e ~e ) E & ^ O o ~) ~E ~& ~^ ~O ~o
+~e ) E & ^ O o ~) ~E ~& ~^ ~O ~o
+E ~E ) & ^ O o ~) ~& ~^ ~O ~o
+~E ) & ^ O o ~) ~& ~^ ~O ~o
+& ~& ) A ^ o ~) ~A ~^ ~o
+~& ) A ^ o ~) ~A ~^ ~o
+) ~) u U ^ O o ~u ~U ~^ ~O ~o
+~) u U ^ O o ~u ~U ~^ ~O ~o
+u ~u U ^ O o ~U ~^ ~O ~o
+~u U ^ O o ~U ~^ ~O ~o
+U ~U ^ O o ~^ ~O ~o
+~U ^ O o ~^ ~O ~o
+o ~o ^ O A ~^ ~O ~A
+~o ^ O A ~^ ~O ~A
+^ ~^ O A ~O ~A
+~^ O A ~O ~A
+O ~O A ~A
+~O A ~A
+y ~y i I e E & u ~i ~I ~e ~E ~& ~u
+~y i I e E & u ~i ~I ~e ~E ~& ~u
 #
